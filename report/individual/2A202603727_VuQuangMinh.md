@@ -111,16 +111,16 @@ Quy trình nháp hiện tại:
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | Trình bày các ý tưởng của bản thân, Tham gia phản biện và chấm điểm | Đưa ra được điểm số và kêt quả  |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: Chất lượng AC đo như thế nào? Edge cases AI sinh ra có đúng business logic không?, Phân quyền truy cập dữ liệu (RBAC) xử lý thế nào? | Đóng góp vào ý kiến của bài, đưa ra được 1 vài vấn đề  |
-| Nhận phản biện | Câu hỏi tôi nhận được: Có bị Grab/Gojek chặn API/Anti-scraping không?, Khác gì các bộ lọc từ khóa nâng cao của TopCV, Rủi ro bảo mật OTP/Banking API là cực cao, liệu người dùng dám cấp quyền?| Tôi đã sửa gì: Cần phải xem xét về khả năng của các phương án, tuy mới chỉ là xác định bài toán nhưng cần cân nhác thêm  |
-| Gom cluster / cây OST | Phân loại:   | |
-| Chọn candidate problem |  |  |
-| Kiểm chứng / research |  |  |
-| Quy trình nhóm |  |  |
-| Problem Statement |  |  |
-| Mức can thiệp AI |  |  |
-| Quyết định | Tổng hợp Value, Usability, Feasibility và Viability. Đưa kết quả cho dự án | Nhóm chọn được bài toán phù hợp |
+| Pitch Problem Card | Chia sẻ 3 card cá nhân (#4 So sánh giá xe, #5 Matching Job & CV, #6 Quản lý chi tiêu) và nghe 6 card của các thành viên còn lại. | Cùng nhóm thảo luận điểm mạnh, điểm yếu từng card để đi đến thống nhất. |
+| Phản biện bài của bạn khác | Hỏi #8: "Chỉ cần PowerShell/Intune thì có cần AI không?" Hỏi #4: "Có bị Grab/Gojek chặn API không?" | Làm rõ giá trị thật của AI và rủi ro phụ thuộc bên thứ ba. |
+| Nhận phản biện | Nhận câu hỏi cho #1 (chất lượng AC) và #6 (rủi ro OTP/banking). Tôi đã sửa: `[điền]`. | Bổ sung giới hạn và rủi ro vào phần đánh giá. |
+| Gom cluster / cây OST | Tham gia gom 9 candidate thành 3 cluster. | Nhóm có cấu trúc cluster và OST để chọn hướng. |
+| Chọn candidate problem | Tham gia chấm điểm 9 candidate (mục 2.4). | #7 đạt 34 điểm, cao nhất nhóm, nên được chọn. |
+| Kiểm chứng / research | Research 4 nguồn: Zalo 1 chiều, eNetViet/SMAS, quy tắc nhóm chat, ghim tin nhắn (bảng 3.3). | Giúp hiểu giải pháp hiện có và đưa ra hướng workflow 1 chiều. |
+| Quy trình nhóm | Vẽ quy trình hiện tại 5 bước, xác định bottleneck ở bước 2 (~10 phút/tối). | Làm cơ sở cho bảng before/after. |
+| Problem Statement | Đóng góp v1, mở rộng Actor thành Phụ huynh + GVCN + Học sinh. | PS v1 phản ánh đủ các bên liên quan. |
+| Mức can thiệp AI | Xây dựng AI Canvas (Prediction/Judgment/Action/Outcome), trả lời 2 câu Google PAIR. Chọn Augment, ưu tiên Recall. | Nhóm chốt hướng Augment, ưu tiên không bỏ sót tin quan trọng. |
+| Quyết định | Đề xuất ngưỡng dừng Pivot/Drop và phạm vi pilot (2-3 lớp, ~100 phụ huynh). | Pilot có điều kiện dừng và quy mô rõ ràng. |
 
 ---
 
@@ -145,17 +145,24 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 Các problems các bạn có nhiều phần liên quan đến nghiệp vụ làm việc. Nó cho thấy các vấn đề khác nhau và cách nhìn khi giải quyết nó
 
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
+Nhóm tôi đã từng rơi vào bẫy "solution-first" rất nặng ở giai đoạn đầu của CP5. Khi vừa chọn xong bài toán nhóm chat phụ huynh, phản xạ đầu tiên của cả nhóm là: "Hãy xây một con Bot AI Telegram/Zalo tự động nhảy vào nhóm chat cá nhân của lớp để cào tin nhắn và tóm tắt mỗi ngày!". Nhóm đã dành gần nửa buổi thảo luận chỉ để bàn xem nên dùng model LLM nào, dùng RAG ra sao để bot không bị trôi tin.
+
+Nhóm chỉ sực tỉnh khi đặt ra câu hỏi kiểm chứng bối cảnh: "Zalo có cho phép một con bot tự do vào đọc lén tin nhắn nhóm cá nhân của 40 phụ huynh không? Giáo viên có đồng ý cho bot vào nhóm không?". Lúc này, nhóm mới nhận ra mình chưa hề hiểu kỹ rào cản nền tảng (Platform Lock-in) và nỗi đau của Giáo viên. Nhóm đã lập tức dừng việc thảo luận giải pháp công nghệ, quay lại phân tích lại quy trình tương tác thực tế và phát hiện ra rằng giải pháp phải đi từ gốc: Giáo viên nạp dữ liệu thô vào Zalo OA riêng tư, AI bóc tách và gửi 1-1, đồng thời hỗ trợ Giáo viên đối soát thu chi để tạo động lực Win-Win cho cả hai bên.
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
+Có đổi ý. Khi được nhận câu "Rủi ro bảo mật OTP/Banking API là cực cao, liệu người dùng dám cấp quyền?" Đã khiến vấn đè nổi rõ rnag hơn. Việc biết rõ người dùng và khỏa chi cực dễ khiên họ là mục tiêu tán công. Khác với các giải pháp trên thị trường lớn mạnh có thể đầu tư vào bảo mật
 
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
+Không quá bất ngờ. Vấn đề này sec gặp nhiều ở các lớp thật sự đông. 
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
+Mức can thiệp AI — chọn Workflow nhưng vẫn phải giải thích "tại sao không phải Rule"
 
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
+Tôi nghĩ mình sẽ ít nói về vấn đề khả thi. Tập trung nhiều hơn về khía cạnh nó có thật sự giả quyết vấn đề không. Vì zalo hoạt động trên 1 kênh duy nhất tool hoàn toàn có thể làm vấn đề nhiều hơn 
 
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
-
+Phụ huynh học sinh mỗi tối phải mở 3–5 nhóm Zalo lớp, lội qua hàng trăm tin nhắn tán gẫu/sticker để nhặt ra bài tập, lịch thi và khoản phí cần đóng — mất khoảng 32 phút/tối và vẫn có nguy cơ bỏ sót 15–20% việc cần làm, trong khi GVCN cũng kiệt sức vì phải dò tay từng ảnh bill chuyển khoản của phụ huynh. Quy trình hiện tại gồm 5 bước: mở nhóm → lọc tin rác bằng mắt (bottleneck chính, ~10 phút) → tìm bài tập rải rác trong văn bản/ảnh viết tay → ghi nhớ/ghi chú → tìm STK và chuyển tiền; quy trình tương lai thay bước lọc thủ công bằng chuỗi Rule (tag @BOT) → AI (OCR ảnh đề cương/bill + LLM trích xuất) → Rule (kiểm tra định dạng, độ tin cậy) → Human duyệt → BOT gửi bản tóm tắt cá nhân hóa vào chat riêng từng phụ huynh. Metric đặt ra là thời gian cập nhật việc học giảm từ 32 phút/tối xuống dưới 2 phút/tối, tỷ lệ bỏ sót action items từ 15–20% xuống 0%, đo qua log tương tác với BOT và phản hồi hàng tuần — đây là mục tiêu kỳ vọng, chưa phải kết quả đã kiểm chứng. Boundary xác định rõ AI chỉ đọc–phân loại–trích xuất–tổng hợp, không tự suy đoán thông tin thiếu (STK, số tiền, hạn nộp), GVCN giữ quyền xác nhận thông tin quan trọng và phụ huynh là người quyết định hành động cuối cùng, đặc biệt với chuyển khoản; hệ thống cũng không thay thế app học bạ chính thức của trường. Mức can thiệp AI được chọn là Workflow (Rule + LLM/OCR + Human-in-the-loop) vì dữ liệu đầu vào đa phương tiện (văn bản gõ vội, ảnh viết tay, ghi âm, ảnh bill) khiến Rule thuần bất lực, còn để Agent tự quyết là rủi ro quá cao với tiền bạc và lịch học của trẻ; thiết kế ưu tiên Recall (thà báo thừa còn hơn bỏ sót). Quyết định cuối cùng là GO (Pilot) trên 2–3 lớp (~100 phụ huynh, 3 GVCN) với 3 tính năng core, kèm ngưỡng dừng rõ ràng: nếu sau 3 tuần có >20% bill OCR sai phải sửa tay hoặc >15% phụ huynh phản ánh bỏ sót bài tập thì dừng mô hình AI và chuyển về Rule + Google Form/Sheet.
 ---
 
 ## 7. Tài liệu tham khảo
