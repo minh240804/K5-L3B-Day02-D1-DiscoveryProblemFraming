@@ -5,253 +5,95 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: D1
 - Thành viên: xem `TEAM.md`
-- Candidate problem được chọn (1 câu):
+- Candidate problem được chọn (1 câu): Khi nhận hàng trăm tin nhắn Zalo lớp, phụ huynh muốn 1 bản tóm tắt việc học/tiền bạc duy nhất. | Phụ huynh học sinh | Cuộn đọc tin tán gẫu để nhặt tin nhắn cô dặn (15') & dịch ảnh bài tập mờ (8')
 - Quyết định cuối: Go / Not Yet / No-Go
 
 ---
 
-# 2. HỘI TỤ NHÓM (CP3)
+## 2. Hội tụ nhóm (CP3)
 
-## 2.1. Pitch
+### 2.1. Pitch
 
-| **#** | **Người đưa ra** | **Candidate (Job Story ngắn)**                                                                                           | **Actor**       | **Bottleneck**                                                                | **Câu hỏi phản biện nhận được (ai hỏi)**                                |
-| ----- | ---------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| 1     | Thành viên nhóm  | Khi họp xong, tôi muốn tạo User Story và AC từ ghi chú để Dev có thể triển khai kịp sprint.                              | BA, Dev         | Mất khoảng 2 tiếng để tổng hợp và viết tài liệu; riêng AC mất khoảng 40 phút. | Làm thế nào đánh giá chất lượng AC do AI tạo ra?                        |
-| 2     | Thành viên nhóm  | Khi họp xong, tôi muốn gửi Meeting Minutes trong ngày để stakeholder xác nhận kịp thời.                                  | BA, Stakeholder | Mất 30–60 phút để sắp xếp ghi chú và tổng hợp nội dung.                       | Làm sao đảm bảo AI không bỏ sót quyết định hoặc phân công sai người?    |
-| 3     | Thành viên nhóm  | Khi nhận tài liệu dài từ khách hàng, tôi muốn nhanh chóng nắm được các yêu cầu chính để chuẩn bị cho buổi họp tiếp theo. | BA              | Mất khoảng 2 tiếng đọc tài liệu 25–30 trang.                                  | Tóm tắt thế nào để không bỏ sót yêu cầu quan trọng?                     |
-| 4     | Thành viên nhóm  | Khi Dev nhận User Story, tôi muốn họ hiểu đúng yêu cầu ngay lần đầu để hạn chế việc hỏi lại BA.                          | Dev, BA         | Dev phải hỏi lại để làm rõ yêu cầu, ước tính khoảng 1 lần/story.              | Có thể đo lường mức độ hiểu đúng yêu cầu như thế nào?                   |
-| 5     | Thành viên nhóm  | Khi stakeholder thay đổi yêu cầu, tôi muốn xác định các tài liệu và Test Case bị ảnh hưởng để tránh bỏ sót.              | BA, QA, Dev     | Mất 30–60 phút/lần thay đổi để kiểm tra thủ công.                             | Làm sao xác định chính xác các thành phần có liên quan?                 |
-| 6     | Thành viên nhóm  | Khi cần biết lý do của một quyết định cũ, tôi muốn tìm lại thông tin đã thống nhất để không phải họp lại từ đầu.         | BA, Dev, QA     | Mất 20–30 phút hoặc lâu hơn để tìm kiếm thông tin từ nhiều nguồn.             | Dữ liệu nằm ở nhiều nguồn và có phân quyền khác nhau thì xử lý thế nào? |
-| 7     | Thành viên nhóm  | Khi QA kiểm thử, tôi muốn phát hiện sớm yêu cầu mâu thuẫn hoặc thiếu sót để tránh sửa lỗi muộn.                          | QA, Dev, BA     | Phát sinh khoảng 2 bug/sprint do hiểu sai yêu cầu (cần xác minh).             | Làm sao phân biệt lỗi do yêu cầu thiếu với lỗi do lập trình?            |
-| 8     | Thành viên nhóm  | Khi backlog có nhiều yêu cầu, tôi muốn phân loại và đánh giá mức độ ưu tiên để tập trung vào các yêu cầu quan trọng.     | BA, PO          | Tốn thời gian trao đổi và sắp xếp backlog.                                    | AI dựa trên tiêu chí nào để đánh giá mức độ ưu tiên?                    |
-| 9     | Chưa xác định    | Chưa bổ sung                                                                                                             | Chưa xác định   | Chưa xác định                                                                 | Chưa xác định                                                           |
+| # | Người đưa ra | Candidate (Job Story ngắn) | Actor | Bottleneck | Câu hỏi phản biện nhận được (ai hỏi) |
+|---:|---|---|---|---|---|
+| 1 | Hoàng Minh Diệp | Khi vừa họp xong, BA muốn có sẵn User Story + AC để kịp Sprint Planning. | BA phụ trách ghi nhận | Viết AC + edge cases mất 40' | Chất lượng AC đo như thế nào? Edge cases AI sinh ra có đúng business logic không? (Vũ Quang Minh) |
+| 2 | Hoàng Minh Diệp | Khi họp xong, BA muốn gửi Meeting Minutes trong ngày để stakeholder xác nhận. | BA tổng hợp biên bản | Sắp xếp ghi chú + đối chiếu recording (30–60') | Nếu đã có Whisper/Notion AI thì giá trị thặng dư là gì? (Nguyễn Hoàng Gia An) |
+| 3 | Hoàng Minh Diệp | Khi phát sinh logic cũ, BA/Dev Muốn tìm lại quyết định cũ để không họp lại từ đầu. | BA, Dev, QA | Tìm kiếm & đối chiếu thông tin từ nhiều nguồn (20–30') | Phân quyền truy cập dữ liệu (RBAC) xử lý thế nào? (Thành viên 4) |
+| 4 | Vũ Quang Minh | Khi muốn đặt xe, người dùng muốn so sánh giá cước giữa nhiều app tiện lợi. | Người dùng đặt xe | Chuyển đổi giữa 3-4 app, nhập lại thông tin (10') | Có bị Grab/Gojek chặn API/Anti-scraping không? (Hoàng Minh Diệp) |
+| 5 | Vũ Quang Minh | Khi tìm việc, ứng viên muốn đối chiếu JD với CV và mức lương nhanh chóng. | Ứng viên | Đọc & phân tích thủ công từng JD, so sánh năng lực (15-20') | Khác gì các bộ lọc từ khóa nâng cao của TopCV? (Nguyễn Hoàng Gia An) |
+| 6 | Vũ Quang Minh | Khi quản lý tài chính, người dùng muốn tổng hợp chi tiêu từ ngân hàng & ví điện tử. | Người tiêu dùng | Đăng nhập từng app, chép thủ công lịch sử giao dịch (10') | Rủi ro bảo mật OTP/Banking API là cực cao, liệu người dùng dám cấp quyền? (Thành viên 4) |
+| 7 | Nguyễn Hoàng Gia An | Khi nhận hàng trăm tin nhắn Zalo lớp, phụ huynh muốn 1 bản tóm tắt việc học/tiền bạc duy nhất. | Phụ huynh học sinh | Cuộn đọc tin tán gẫu để nhặt tin nhắn cô dặn (15') & dịch ảnh bài tập mờ (8') | Chữ viết tay của cô giáo mờ/xấu AI có bóc tách (OCR) chính xác không? (Hoàng Minh Diệp) |
+| 8 | Nguyễn Hoàng Gia An | Khi onboard nhân sự, IT Support muốn máy tự động cài đặt ứng dụng theo vai trò. | IT Support | Tải file, gõ pass Admin, click thủ công từng bước (18') | Bài này chỉ cần PowerShell script / Intune MDM, có thực sự cần AI không? (Vũ Quang Minh) |
+| 9 | Nguyễn Hoàng Gia An | Khi nghe điện thoại lạ đe dọa, người già muốn chặn giao dịch chuyển tiền hoảng loạn. | Người cao tuổi, Con cái | Bị lừa đảo thao túng tâm lý cô lập hoàn toàn (25') | App ngân hàng có can thiệp được vào cuộc gọi thoại riêng tư không (vi phạm quyền riêng tư)? (Hoàng Minh Diệp) |
 
-**Nhận xét sau Pitch:**
 
-Các ý tưởng tập trung vào ba nhóm công việc chính:
+### 2.2. Cluster
 
-- Tạo lập và chuẩn hóa tài liệu nghiệp vụ.
-- Tìm kiếm, quản lý và khai thác thông tin dự án.
-- Kiểm soát chất lượng và quản lý yêu cầu.
 
-## 2.2. Cluster
+| Cluster | Các candidate | Pattern chung |
+|---|---|---|
+| **A: BA Operations** | Candidate #1, #2, #3 | Tổng hợp, trích xuất thông tin nghiệp vụ và kiến thức dự án từ tài liệu/cuộc họp un-structured. |
+| **B: Consumer Utility** | Candidate #4, #5, #6 | Aggregator (tổng hợp dữ liệu đa nguồn) hỗ trợ người tiêu dùng ra quyết định (xe, việc làm, tài chính). |
+| **C: Safety & Automation** | Candidate #7, #8, #9 | Tự động hóa tác vụ lặp lại, bóc tách dữ liệu thông báo và bảo vệ an toàn thông tin/tài sản cho người dùng. |
 
-Sau khi tổng hợp các ý tưởng, nhóm chia thành 3 cụm theo nhu cầu nghiệp vụ thay vì chia theo công nghệ hoặc giải pháp AI.
 
-| **Cluster**                                        | **Các candidate** | **Pattern chung**                                                                                                                                              |
-| -------------------------------------------------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| A. Requirement Documentation                       | #1, #2, #3        | BA phải đọc, tổng hợp và chuyển đổi thông tin từ cuộc họp hoặc tài liệu thành các đầu ra nghiệp vụ. Công việc lặp lại, tốn thời gian và cần kiểm tra thủ công. |
-| B. Requirement Traceability & Knowledge Management | #5, #6            | Thông tin dự án nằm rải rác, khó truy xuất và khó xác định mối liên hệ giữa các yêu cầu, quyết định và tài liệu.                                               |
-| C. Requirement Quality & Delivery                  | #4, #7, #8        | Dev, QA và PO gặp khó khăn trong việc hiểu đúng, kiểm soát chất lượng và ưu tiên các yêu cầu.                                                                  |
+### 2.3. Opportunity Solution Tree rút gọn
 
-**Pattern chung của cả 3 Cluster:**
 
-BA và các thành viên dự án đang dành nhiều thời gian cho việc xử lý thông tin thủ công, trong khi thông tin thường phân tán, thiếu liên kết và cần được kiểm tra qua nhiều bước trước khi có thể sử dụng.
-
-## 2.3. Opportunity Solution Tree rút gọn
-
-**Outcome:**
-
-Giảm thời gian xử lý thông tin và hạn chế sai sót trong quy trình quản lý yêu cầu của BA.
-
+```text
+OUTCOME: Giảm thời gian xử lý thông tin lặp lại & tăng hiệu suất sinh hoạt/làm việc hàng ngày lên trên 70%
+├── Opportunity A: Phụ huynh mất quá nhiều thời gian lọc tin rác Zalo để tìm dặn dò của cô giáo
+│   ├── Solution Candidate 7: AI Parsing Zalo Chat + OCR bài tập viết tay -> Dashboard Action Items
+├── Opportunity B: BA mất nhiều giờ soạn thảo AC & biên bản họp từ ghi chú thô
+│   ├── Solution Candidate 1: AI Auto-drafting Story/AC & Edge Cases
+│   └── Solution Candidate 2: AI Meeting Minutes Extractor
+├── Opportunity C: IT Support tiêu tốn thời gian cài đặt máy tính thủ công cho nhân viên mới
+│   └── Solution Candidate 8: Zero-touch Onboarding Script/Bot
+└── Opportunity D: Người tiêu dùng mất thời gian chuyển đổi nhiều app để so sánh dữ liệu
+    ├── Solution Candidate 4: Multi-app Ride Comparison
+    └── Solution Candidate 6: Multi-bank Expense Aggregator
 ```
-OUTCOME:
-Giảm thời gian xử lý thông tin và hạn chế sai sót trong
-quy trình quản lý yêu cầu của BA.
-│
-├── Opportunity A: Giảm thời gian chuyển đổi thông tin
-│   thành tài liệu nghiệp vụ
-│   ├── Tạo User Story và Acceptance Criteria sau họp (#1)
-│   ├── Tổng hợp và gửi Meeting Minutes (#2)
-│   └── Đọc, tổng hợp yêu cầu từ tài liệu dài (#3)
-│
-├── Opportunity B: Tăng khả năng truy xuất và liên kết
-│   thông tin dự án
-│   ├── Xác định ảnh hưởng khi yêu cầu thay đổi (#5)
-│   └── Tìm kiếm lịch sử và lý do quyết định cũ (#6)
-│
-└── Opportunity C: Nâng cao chất lượng và hiệu quả
-    quản lý yêu cầu
-    ├── Giúp Dev hiểu đúng yêu cầu (#4)
-    ├── Phát hiện yêu cầu mâu thuẫn hoặc thiếu sót (#7)
-    └── Hỗ trợ phân loại và ưu tiên Backlog (#8)
-```
+
 
 **Những ý đã gạch bỏ vì là solution đội lốt opportunity:**
+- Xây dựng Chatbot RAG kiến thức dự án(Solution cho việc tìm quyết định cũ).
+- Viết PowerShell Script tự cài phần mềm (Solution cho IT Onboarding).
+- Tích hợp API ngân hàng để quét lịch sử giao dịch (Solution cho tổng hợp chi tiêu).
 
-- Sử dụng LLM để tạo User Story và Acceptance Criteria.
-- Xây dựng chatbot AI để tìm kiếm quyết định cũ.
-- Sử dụng RAG để truy xuất tài liệu dự án.
-- Xây dựng Agent tự động phân loại và ưu tiên Backlog.
 
-**Lý do:** Đây là các giải pháp hoặc công nghệ được đề xuất để giải quyết vấn đề, không phải nhu cầu hay nỗi đau thực tế của người dùng.
+### 2.4. Chấm điểm shortlist (1–5)
 
-## 2.4. Chấm điểm shortlist (1–5)
 
-Nhóm chọn 3 candidate đại diện cho 3 hướng bài toán khác nhau để đánh giá sâu hơn.
+| Candidate | Actor rõ | Quy trình rõ | Pain có bằng chứng | Impact đo được | Vừa sức lab | So sánh được No AI/Rule/Workflow/Agent | Nhóm hiểu domain | Tổng |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| 1. BA AC Generator | 4 | 5 | 4 | 4 | 4 | 4 | 4 | **29** |
+| 2. BA Meeting Minutes | 4 | 4 | 4 | 3 | 5 | 4 | 4 | **28** |
+| 3. Decision Finder (RAG) | 4 | 3 | 4 | 4 | 3 | 4 | 3 | **25** |
+| 4. So sánh giá xe | 5 | 4 | 3 | 3 | 2 | 3 | 4 | **24** |
+| 5. Matching Job & CV | 4 | 3 | 3 | 3 | 3 | 4 | 3 | **23** |
+| 6. Quản lý chi tiêu | 4 | 4 | 4 | 3 | 2 | 3 | 3 | **23** |
+| **7. Zalo Parent Assistant** | **5** | **5** | **5** | **5** | **4** | **5** | **5** | **34** |
+| 8. IT Setup Automation | 4 | 5 | 3 | 4 | 4 | 2 (Rule đủ) | 4 | **26** |
+| 9. Anti-Fraud Financial | 4 | 3 | 5 | 5 | 2 | 4 | 2 | **25** |
 
-| **Candidate**            | **Actor rõ** | **Quy trình rõ** | **Pain có bằng chứng** | **Impact đo được** | **Vừa sức lab** | **So sánh được No AI/Rule/Workflow/Agent** | **Nhóm hiểu domain** | **Tổng**  |
-| ------------------------ | ------------ | ---------------- | ---------------------- | ------------------ | --------------- | ------------------------------------------ | -------------------- | --------- |
-| #1 – Tạo User Story + AC | 5            | 5                | 4                      | 4                  | 5               | 5                                          | 5                    | **33/35** |
-| #2 – Tạo Meeting Minutes | 5            | 5                | 4                      | 3                  | 5               | 5                                          | 5                    | **32/35** |
-| #6 – Tìm quyết định cũ   | 5            | 3                | 3                      | 4                  | 3               | 4                                          | 4                    | **26/35** |
 
-*Điểm số là đánh giá sơ bộ của nhóm dựa trên thông tin hiện có, chưa phải kết quả khảo sát định lượng.*
+**Candidate được chọn:** **Candidate #7 - Zalo Parent Assistant (Tổng hợp thông báo & bài tập từ nhóm chat Zalo phụ huynh)**
 
-**Candidate được chọn:**
-
-\#1 – Tự động hỗ trợ BA tạo User Story và Acceptance Criteria sau cuộc họp.
 
 **Vì sao chọn:**
+1. **Pain point cực kỳ nhức nhối & phổ biến:** Phụ huynh nào cũng gặp tình trạng "ngợp" tin nhắn Zalo lớp học mỗi tối (100–200 tin/ngày/lớp).
+2. **Quy trình & Bottleneck rõ ràng:** Mất 32 phút mỗi tối chỉ để cuộn màn hình, nhặt tin dặn dò và đọc ảnh chữ viết tay mờ.
+3. **Phù hợp công nghệ (Feasibility & Value):** Kết hợp hoàn hảo giữa LLM (phân loại, tóm tắt) và OCR (đọc chữ viết tay), vừa sức triển khai trong khuôn khổ Lab nhưng đem lại impact cực cao.
+4. **Phân biệt rõ mức độ AI:** Thể hiện rõ sự khác biệt giữa No AI (khóa chat), Rule (bộ lọc từ khóa đơn thuần) và AI Workflow (LLM + OCR).
 
-- Actor rõ ràng: BA là người trực tiếp thực hiện công việc.
-- Quy trình hiện tại đã được mô tả cụ thể với 7 bước, xác định được bottleneck ở bước viết Acceptance Criteria.
-- Có baseline tương đối rõ: khoảng 120 phút cho một buổi họp, trong đó viết AC mất khoảng 40 phút.
-- Có thể đo lường hiệu quả bằng thời gian hoàn thành tài liệu và tỷ lệ AC đạt yêu cầu sau khi review.
-- Phạm vi triển khai phù hợp với thời gian của lab: có thể sử dụng transcript hoặc ghi chú đầu vào để tạo bản nháp User Story và AC, sau đó BA kiểm tra.
 
 **Vì sao loại các candidate còn lại:**
-
-- **#2 – Meeting Minutes:** Có tính lặp lại và dễ triển khai, nhưng có phần trùng lặp với #1 về dữ liệu đầu vào và quy trình xử lý sau cuộc họp. Có thể xem xét tích hợp thành đầu ra bổ sung của cùng một workflow.
-- **#6 – Tìm quyết định cũ:** Có tiềm năng ứng dụng AI và ảnh hưởng đến nhiều thành viên, nhưng phạm vi dữ liệu rộng, nằm ở nhiều nguồn khác nhau và cần giải quyết bài toán phân quyền truy cập. Khó triển khai đầy đủ trong thời gian lab.
-- **Các candidate còn lại:** Có giá trị nhưng cần thêm dữ liệu thực tế để chứng minh mức độ ảnh hưởng, xác định tiêu chí đánh giá hoặc giới hạn phạm vi triển khai.
-
-**Xử lý bất đồng (nếu có):**
-
-Nhóm thống nhất sử dụng các tiêu chí chấm điểm chung gồm: độ rõ ràng của Actor, quy trình, bằng chứng về pain point, khả năng đo lường impact và tính khả thi khi triển khai. Các thành viên đánh giá từng candidate, so sánh tổng điểm và thảo luận những tiêu chí có sự khác biệt. Cuối cùng, nhóm ưu tiên bài toán có quy trình rõ, dữ liệu đầu vào khả thi và có thể đo lường hiệu quả sau triển khai.
-
-*Nếu nhóm chưa thực sự có bất đồng, có thể ghi: Không phát sinh bất đồng lớn; các thành viên thống nhất lựa chọn dựa trên bảng tiêu chí đánh giá.*
-
-
-
----
-
-
-
-## 2.5. Liên kết CP3 với Top 3 Problem Cards ở CP2
-
-| **Rank** | **Candidate**            | **Cluster** | **Vai trò trong nhóm bài toán**            |
-| -------- | ------------------------ | ----------- | ------------------------------------------ |
-| 1        | #1 – Tạo User Story + AC | A           | Bài toán ưu tiên triển khai                |
-| 2        | #2 – Tạo Meeting Minutes | A           | Bài toán có thể tích hợp cùng workflow #1  |
-| 3        | #6 – Tìm quyết định cũ   | B           | Bài toán mở rộng về quản lý tri thức dự án |
-
-**Định hướng tổng thể:**
-
-Nhóm lựa chọn #1 làm bài toán triển khai chính trong lab. #2 và #6 vẫn được giữ trong Top 3 vì có giá trị thực tế, nhưng chưa nhất thiết phải triển khai đồng thời.
-
-## 3. Liên kết với Top 3 Problem Cards (CP2)
-
-### Problem Card #1 – Tạo User Story và Acceptance Criteria sau cuộc họp
-
-| **Trường**              | **Nội dung**                                                                                                                                                                                                 |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Job Story               | Khi vừa họp xong với stakeholder, tôi muốn có sẵn User Story và AC, để Dev kịp đưa vào sprint planning.                                                                                                      |
-| Actor                   | BA phụ trách ghi nhận và sắp xếp yêu cầu.                                                                                                                                                                    |
-| Thời điểm / bối cảnh    | Trong vòng 1 ngày sau buổi họp, trước khi sprint planning.                                                                                                                                                   |
-| Quy trình hiện tại      | 1. Sắp xếp ghi chú/nghe lại recording. 2. Gom yêu cầu theo chủ đề. 3. Viết User Story. 4. Viết AC (gồm edge case). 5. Đối chiếu tài liệu cũ, tìm mâu thuẫn. 6. Nhập vào Jira. 7. Gửi Dev/stakeholder review. |
-| Bottleneck              | Bước 4, viết AC: khoảng 40 phút, hay thiếu edge case và bị Dev hỏi lại.                                                                                                                                      |
-| Impact                  | Khoảng 2 tiếng/buổi họp; 2 buổi/tuần thì cần 4 tiếng/tuần/BA.                                                                                                                                                |
-| Success metric          | Tổng thời gian từ 2 tiếng xuống dưới 60 phút.                                                                                                                                                                |
-| Phương án không dùng AI | Tạo sẵn template cho User Story + checklist AC (Given/When/Then) + checklist edge case.                                                                                                                      |
-| Giả thuyết về AI        | AI soạn nháp User Story + AC từ ghi chú đã dọn, BA kiểm tra, bổ sung edge case rồi mới nhập Jira.                                                                                                            |
-| Cảm nhận nhanh          | Workflow                                                                                                                                                                                                     |
-
-**Quy trình nháp hiện tại:**
-
-```
-HIỆN TẠI - 120 phút
-
-[1. Sắp xếp ghi chú: 10']
-          ↓
-[2. Gom theo chủ đề: 15']
-          ↓
-[3. Viết User Story: 15']
-          ↓
-[4. Viết AC (gồm edge case): 40'] ← BOTTLENECK
-          ↓
-[5. Đối chiếu tài liệu cũ: 25']
-          ↓
-[6. Nhập Jira: 10']
-          ↓
-[7. Gửi Dev/stakeholder review: 5']
-```
-
-### Problem Card #2 – Tạo và gửi Meeting Minutes
-
-| **Trường**              | **Nội dung**                                                                                                                                                                                                                                                                                                                             |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Job Story               | Khi họp xong, tôi muốn gửi Meeting Minutes trong ngày, để stakeholder xác nhận kịp.                                                                                                                                                                                                                                                      |
-| Actor                   | BA phụ trách ghi chép, tổng hợp nội dung và gửi biên bản cuộc họp cho stakeholder.                                                                                                                                                                                                                                                       |
-| Thời điểm / bối cảnh    | Ngay sau khi kết thúc cuộc họp, thường trong ngày làm việc, khi các bên vẫn còn nhớ nội dung trao đổi.                                                                                                                                                                                                                                   |
-| Quy trình hiện tại      | 1. Tổng hợp ghi chú trong cuộc họp. 2. Nghe lại recording nếu có nội dung chưa rõ. 3. Phân loại nội dung theo chủ đề. 4. Tổng hợp các vấn đề đã thảo luận và quyết định được thống nhất. 5. Ghi nhận yêu cầu, người phụ trách và deadline. 6. Kiểm tra lại nội dung và định dạng Meeting Minutes. 7. Gửi email cho stakeholder xác nhận. |
-| Bottleneck              | Bước 2–5: Sắp xếp lại ghi chú, đối chiếu recording và tổng hợp nội dung. Mất khoảng 30–60 phút cho mỗi buổi họp.                                                                                                                                                                                                                         |
-| Impact                  | Meeting Minutes được gửi chậm, stakeholder có thể quên nội dung đã thống nhất hoặc hiểu khác nhau về trách nhiệm và deadline. BA mất thời gian cho công việc tổng hợp lặp lại sau mỗi cuộc họp.                                                                                                                                          |
-| Success metric          | Thời gian tạo và gửi Meeting Minutes từ 30–60 phút xuống dưới 15 phút/buổi họp; đảm bảo gửi trong ngày và không bỏ sót quyết định, Action Items quan trọng.                                                                                                                                                                              |
-| Phương án không dùng AI | Sử dụng template Meeting Minutes cố định, checklist các nội dung cần ghi nhận và công cụ ghi âm/chuyển giọng nói thành văn bản.                                                                                                                                                                                                          |
-| Giả thuyết về AI        | AI tiếp nhận ghi chú cuộc họp, tự động phân loại nội dung, trích xuất quyết định, người phụ trách và deadline, sau đó tạo bản nháp Meeting Minutes. BA kiểm tra và gửi stakeholder xác nhận.                                                                                                                                             |
-| Cảm nhận nhanh          | Workflow                                                                                                                                                                                                                                                                                                                                 |
-
-**Quy trình nháp hiện tại:**
-
-```
-HIỆN TẠI - 30–60 phút
-
-[1. Tổng hợp ghi chú: 10']
-          ↓
-[2. Nghe lại recording nếu cần: 10']
-          ↓
-[3. Phân loại nội dung: 10']
-          ↓
-[4. Tổng hợp quyết định và Action Items: 15']
-          ↓
-[5. Kiểm tra, định dạng Meeting Minutes: 10']
-          ↓
-[6. Gửi Stakeholder xác nhận: 5']
-```
-
-*Lưu ý: Phân bổ thời gian trên là giả định minh họa, cần đo thực tế để xác nhận.*
-
-### Problem Card #3 – Tìm kiếm lịch sử quyết định nghiệp vụ
-
-| **Trường**              | **Nội dung**                                                                                                                                                                                                                                                                                                                                                                                 |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Job Story               | Khi cần biết vì sao từng chốt phương án A, tôi muốn tìm lại quyết định cũ, để không phải họp lại từ đầu.                                                                                                                                                                                                                                                                                     |
-| Actor                   | BA, Dev, QA và các thành viên liên quan đến dự án cần tra cứu thông tin nghiệp vụ đã được thống nhất.                                                                                                                                                                                                                                                                                        |
-| Thời điểm / bối cảnh    | Khi phát sinh yêu cầu mới, cần kiểm tra logic nghiệp vụ cũ, có thành viên mới tham gia dự án hoặc cần giải thích lý do lựa chọn một phương án trước đây.                                                                                                                                                                                                                                     |
-| Quy trình hiện tại      | 1. Xác định vấn đề hoặc quyết định nghiệp vụ cần tìm hiểu. 2. Nhớ lại thời điểm hoặc những người tham gia thảo luận. 3. Tìm kiếm trong Meeting Minutes, email, chat hoặc tài liệu dự án. 4. Đọc và đối chiếu các thông tin tìm được. 5. Xác định quyết định cuối cùng và lý do lựa chọn. 6. Nếu không tìm được, hỏi BA hoặc stakeholder từng tham gia. 7. Tổng hợp lại thông tin để sử dụng. |
-| Bottleneck              | Bước 3–4: Tìm kiếm và đối chiếu thông tin từ nhiều nguồn khác nhau. Mất khoảng 20–30 phút hoặc lâu hơn cho mỗi lần tìm kiếm.                                                                                                                                                                                                                                                                 |
-| Impact                  | BA và các thành viên phải mất thời gian tìm kiếm hoặc hỏi lại người cũ. Có thể phải tổ chức họp lại để làm rõ những vấn đề đã từng được thống nhất. Nguy cơ đưa ra quyết định không nhất quán với logic nghiệp vụ trước đó.                                                                                                                                                                  |
-| Success metric          | Thời gian tìm kiếm thông tin từ 30–60 phút xuống dưới 15 phút/lần; tăng tỷ lệ truy xuất được quyết định kèm nguồn tham chiếu và lý do lựa chọn.                                                                                                                                                                                                                                              |
-| Phương án không dùng AI | Xây dựng kho lưu trữ tập trung cho Meeting Minutes, email và tài liệu dự án; chuẩn hóa cách đặt tên file, gắn tag theo dự án, module, chủ đề và ngày tháng; lập Decision Log ghi nhận quyết định, lý do và người phê duyệt.                                                                                                                                                                  |
-| Giả thuyết về AI        | Xây dựng AI Business Knowledge Assistant sử dụng RAG để tìm kiếm thông tin từ Meeting Minutes, email và tài liệu dự án. Người dùng đặt câu hỏi bằng ngôn ngữ tự nhiên, hệ thống tìm các thông tin liên quan và tổng hợp câu trả lời kèm nguồn trích dẫn, thời điểm và bối cảnh quyết định.                                                                                                   |
-| Cảm nhận nhanh          | Agent                                                                                                                                                                                                                                                                                                                                                                                        |
-
-**Quy trình nháp hiện tại:**
-
-```
-HIỆN TẠI - 20–30 phút hoặc lâu hơn
-
-[1. Xác định quyết định cần tìm]
-          ↓
-[2. Xác định thời gian / người tham gia]
-          ↓
-[3. Tìm kiếm trong Email / Chat / Documents]
-          ↓
-[4. Đọc và đối chiếu thông tin]
-          ↓
-[5. Xác định quyết định cuối cùng]
-          ↓
-     Tìm thấy thông tin?
-        /         \
-      Có           Không
-      ↓              ↓
-[6. Tổng hợp]   [7. Hỏi BA / Stakeholder cũ]
-      ↓     
-```
-
+- *Candidate #8 (IT Setup):* No AI/Rule (PowerShell Script / MDM Intune) đã giải quyết 95% bài toán, đưa AI vào là over-engineering.
+- *Candidate #4 & #6 (Giá xe, Chi tiêu):* Vướng rào cản kỹ thuật/bảo mật lớn (chống scraping API của Grab, bảo mật ngân hàng, OTP), feasibility thấp trong bài tập lab.
+- *Candidate #9 (Anti-fraud):* Rất khó mô phỏng dữ liệu cuộc gọi thực tế và rào cản pháp lý/quyền riêng tư trên di động.
+- *Candidate #1, #2, #3 (BA domain):* Tiềm năng tốt nhưng phạm vi hẹp hơn, người dùng cuối (Target Audience) không rộng lớn và cảm nhận pain trực quan bằng phụ huynh học sinh.
 
 ## 3. Kiểm chứng + research giải pháp đã có (CP4)
 
@@ -259,37 +101,36 @@ HIỆN TẠI - 20–30 phút hoặc lâu hơn
 
 | # | Giả định | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
 |---:|---|---|---:|---:|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
-
-*Điền 4–6 giả định; xóa dòng thừa.*
+| 1 | Phụ huynh khác cũng bị quá tải tin nhắn| Value | 5 | 5 | ✅ |
+| 2 | Bước tốn thời gian nhất là đọc tất cả tin nhắn | Value | 5 | 5 | ✅ |
+| 3 | Tool có đọc được trên Zalo | Feasibility | 5 |  | ✅ |
+| 4 | Giáo viên chủ nhiệm sẵn sàng áp dụng giải pháp mới nếu không làm gia tăng khối lượng công việc tổng hợp bài nộp hay trả lời tin nhắn riêng | 4 | 3 | |
+| 5 | Phụ huynh chấp nhận chuyển sang kênh thông báo phân luồng/1 chiều để tránh bỏ lỡ thông tin quan trọng Usability | 4 | 3 | |
 
 Giả định nhóm kiểm chứng trong buổi này:
-
 ### 3.2. Kiểm chứng
 
-Cách đã dùng: Phỏng vấn / Survey / Log, ticket, review
+Cách đã dùng: Phỏng vấn, Log
 
-Interview snapshot (mỗi buổi phỏng vấn một bảng, hoặc đặt file trong `report/assets/cp4-interview-snapshot-N.md`):
+Nhóm phỏng vấn 2 Phụ Huynh quen biết.
+
+Interview snapshot — người thứ 1:
 
 | Trường | Nội dung |
 |---|---|
-| Người được hỏi (vai trò, không ghi tên thật) | |
-| Câu nói đáng nhớ nhất (nguyên văn) | |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | |
-| Hiện đang xử lý bằng cách nào (workaround)? | |
-| Mất bao lâu, bao lần? | |
-| Insight / opportunity rút ra | |
-
+| Người được hỏi | Chị H.T.Hương (Nhân viên kế toán, 2 con học tiểu học tại Đà Nẵng) |
+| Câu nói đáng nhớ | "Mỗi tối về nhà, việc đầu tiên của t là ngồi học với con xong check nhóm zalo lớp nó .	Lắm hôm 99+ tin nhắn kh biết đọc từ đâu” |
+| Lần gần nhất | Thứ Sáu tuần trước, viết update tháng, mất khoảng 2 tiếng |
+| Workaround hiện tại | Chỉ đọc thông báo từ giáo viên, lướt qua hoặc bỏ qua mấy cái trao đổi lan man  |
+| Mất bao lâu, bao lần | 20-30 phút buổi tối |
+| Insight | Phụ huynh cần giải pháp lọc: Tách biệt hoàn toàn thông báo chính thức của GVCN khỏi luồng thảo luận phụ huynh  |
 Tổng hợp:
 
 | Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác |
 |---|---:|---|---|
 | | | | |
+
+Log: https://giaoduc.net.vn/nhung-cau-chuyen-cuoi-ra-nuoc-mat-khi-giao-vien-phu-huynh-tuong-tac-qua-zalo-post223479.gd
 
 **Nhóm đã sửa problem thế nào sau kiểm chứng:**
 

@@ -4,15 +4,15 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm:
-- Candidate problem nhóm chọn (1 câu):
+- Tên nhóm: D1
+- Candidate problem nhóm chọn (1 câu): 
 - Quyết định cuối (Go / Not Yet / No-Go):
 
 ## Thành viên
 
 | STT | Họ và tên | MSSV | Vai trò trong nhóm | Tài khoản GitHub |
 |---:|---|---|---|---|
-| 1 | | | | |
+| 1 | Vũ Quang Minh|  | | |
 | 2 | | | | |
 | 3 | | | | |
 | 4 | | | | |
