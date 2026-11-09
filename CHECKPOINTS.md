@@ -34,9 +34,9 @@ Mỗi checkpoint có template và prompt mẫu tương ứng trong [docs/01-work
 - **Sản phẩm:** Bảng scan có ít nhất 5 dòng trong báo cáo cá nhân, mục 2.
 - **Cần hiểu:** Khác nhau giữa *problem* ("tốn 90 phút mỗi tuần viết báo cáo") và *solution trá hình* ("thiếu một chatbot viết báo cáo").
 - **Tự kiểm tra:**
-  - [ ] Có ít nhất 5 problem, mỗi problem viết dạng Job Story.
-  - [ ] Không dòng nào có chữ "AI", "chatbot", "agent" trong cột Job Story (kể cả dòng thuộc lăng kính "Cần đọc, tổng hợp nhiều thông tin": mô tả việc khó, chưa nói cách giải).
-  - [ ] Mỗi dòng có ít nhất 1 dấu hiệu thật đo được (thời gian, tần suất, số người).
+  - [x] Có ít nhất 5 problem, mỗi problem viết dạng Job Story.
+  - [x] Không dòng nào có chữ "AI", "chatbot", "agent" trong cột Job Story (kể cả dòng thuộc lăng kính "Cần đọc, tổng hợp nhiều thông tin": mô tả việc khó, chưa nói cách giải).
+  - [x] Mỗi dòng có ít nhất 1 dấu hiệu thật đo được (thời gian, tần suất, số người).
 
 ## CP2 — Top 3 Problem Cards + quy trình nháp (Discover)
 
@@ -49,9 +49,9 @@ Mỗi checkpoint có template và prompt mẫu tương ứng trong [docs/01-work
 - **Sản phẩm:** 3 Problem Card và 3 quy trình nháp (ASCII, Mermaid hoặc ảnh trong `report/assets/`) trong báo cáo cá nhân, mục 3.
 - **Cần hiểu:** Bottleneck là **một bước cụ thể** trong quy trình, không phải cảm giác chung chung "quy trình chậm".
 - **Tự kiểm tra:**
-  - [ ] Mỗi card có đủ: Job Story, actor, quy trình, bottleneck, impact, success metric, phương án không dùng AI.
-  - [ ] Mỗi quy trình có số phút cho từng bước và đánh dấu bước nghẽn.
-  - [ ] Đã đưa card cho AI đóng vai "PM hoài nghi" phản biện và sửa ít nhất 1 điểm.
+  - [x] Mỗi card có đủ: Job Story, actor, quy trình, bottleneck, impact, success metric, phương án không dùng AI.
+  - [x] Mỗi quy trình có số phút cho từng bước và đánh dấu bước nghẽn.
+  - [x] Đã đưa card cho AI đóng vai "PM hoài nghi" phản biện và sửa ít nhất 1 điểm.
 
 ---
 
@@ -70,9 +70,9 @@ Mỗi checkpoint có template và prompt mẫu tương ứng trong [docs/01-work
 - **Sản phẩm:** Báo cáo nhóm mục 2: bảng pitch, bảng cluster, cây OST, bảng chấm điểm, candidate được chọn và lý do loại các candidate khác.
 - **Cần hiểu:** Opportunity là nhu cầu hoặc pain của người dùng. Solution là cách mình đáp ứng nó. Trộn lẫn hai thứ này là lỗi phổ biến nhất ở giai đoạn Define.
 - **Tự kiểm tra:**
-  - [ ] Cây OST có đúng 1 outcome ở gốc, các nhánh là pain, không có tên công cụ hay tính năng.
-  - [ ] Có ghi lý do loại ít nhất 2 candidate khác.
-  - [ ] Mỗi thành viên có ít nhất 1 câu hỏi phản biện được ghi trong bảng pitch.
+  - [x] Cây OST có đúng 1 outcome ở gốc, các nhánh là pain, không có tên công cụ hay tính năng.
+  - [x] Có ghi lý do loại ít nhất 2 candidate khác.
+  - [x] Mỗi thành viên có ít nhất 1 câu hỏi phản biện được ghi trong bảng pitch.
 
 ## CP4 — Kiểm chứng + research giải pháp đã có (Define)
 
@@ -102,9 +102,9 @@ Mỗi checkpoint có template và prompt mẫu tương ứng trong [docs/01-work
 - **Sản phẩm:** Báo cáo nhóm mục 4 (quy trình) và mục 5 (Problem Statement v0). Ảnh hoặc file Mermaid đặt trong `report/assets/`.
 - **Cần hiểu:** Success Metric phải có **baseline** (hiện tại là bao nhiêu), **target** (muốn đạt bao nhiêu) và **cách đo**. "Nhanh hơn", "tiện hơn" không phải metric.
 - **Tự kiểm tra:**
-  - [ ] Quy trình tương lai có ít nhất 1 bước con người kiểm tra và 1 phương án quay về.
-  - [ ] Success Metric có baseline, target và cách đo.
-  - [ ] Boundary ghi rõ AI **không** được làm gì và khi nào cần con người kiểm tra (HITL — human-in-the-loop).
+  - [x] Quy trình tương lai có ít nhất 1 bước con người kiểm tra và 1 phương án quay về.
+  - [x] Success Metric có baseline, target và cách đo.
+  - [x] Boundary ghi rõ AI **không** được làm gì và khi nào cần con người kiểm tra (HITL — human-in-the-loop).
 
 ---
 
@@ -126,10 +126,10 @@ Mỗi checkpoint có template và prompt mẫu tương ứng trong [docs/01-work
 - **Sản phẩm:** Báo cáo nhóm mục 6 (mức can thiệp), 7 (Problem Statement v1), 8 (quyết định).
 - **Cần hiểu:** Workflow là các bước đã định sẵn mà AI chỉ làm một phần. Agent là khi AI **tự quyết bước tiếp theo**. Đa số bài toán ở lab này chỉ cần Rule hoặc Workflow.
 - **Tự kiểm tra:**
-  - [ ] Có câu trả lời rõ cho "vì sao không chọn mức đơn giản hơn".
-  - [ ] Mỗi rủi ro trong 4 rủi ro có mức độ rủi ro Thấp / Trung bình / Cao (Thấp = an toàn) và lý do.
-  - [ ] Quyết định có ngưỡng dừng đo được.
-  - [ ] Problem Statement v1 khác Problem Statement v0 ở ít nhất 1 trường, và có ghi vì sao đổi.
+  - [x] Có câu trả lời rõ cho "vì sao không chọn mức đơn giản hơn".
+  - [x] Mỗi rủi ro trong 4 rủi ro có mức độ rủi ro Thấp / Trung bình / Cao (Thấp = an toàn) và lý do.
+  - [x] Quyết định có ngưỡng dừng đo được.
+  - [x] Problem Statement v1 khác Problem Statement v0 ở ít nhất 1 trường, và có ghi vì sao đổi.
 
 ## CP7 — Reflection cá nhân
 
@@ -142,6 +142,6 @@ Mỗi checkpoint có template và prompt mẫu tương ứng trong [docs/01-work
 - **Sản phẩm:** Báo cáo cá nhân mục 4–6 và phần của bạn trong `TEAM.md`.
 - **Cần hiểu:** Tự giải thích được chuỗi problem → quy trình → metric → boundary → mức can thiệp AI → quyết định cho bài của nhóm, không cần nhìn tài liệu.
 - **Tự kiểm tra:**
-  - [ ] Có ít nhất 1 ví dụ cụ thể bạn đã đổi ý sau khi bị phản biện, hoặc đã phản biện làm nhóm đổi ý.
-  - [ ] Có ít nhất 1 chỗ AI sai hoặc hời hợt và bạn đã sửa thế nào.
-  - [ ] Reflection không do AI viết.
+  - [x] Có ít nhất 1 ví dụ cụ thể bạn đã đổi ý sau khi bị phản biện, hoặc đã phản biện làm nhóm đổi ý.
+  - [x] Có ít nhất 1 chỗ AI sai hoặc hời hợt và bạn đã sửa thế nào.
+  - [x] Reflection không do AI viết.

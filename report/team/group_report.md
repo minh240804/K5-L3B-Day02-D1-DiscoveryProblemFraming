@@ -257,16 +257,21 @@ trùng lặp và mức độ tin cậy]
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+| **Actor** | Phụ huynh học sinh là người tiếp nhận thông tin, giáo viên chủ nhiệm là người phát tin, con cái sẽ bị phạt nếu phụ huynh quên hoặc bỏ lỡ thông tin quan trọng |
+| **Quy trình** | 1. (1 phút) Mở Zalo, duyệt qua 3–5 nhóm lớp (Lớp chính, Bán trú, Tiếng Anh liên kết...) <br> 2. (15 phút) Lướt qua hàng loạt tin tán gẫu, icon cảm ơn, sticker thả tim. <br> 3. (8 phút) Tìm bài tập về nhà nằm rải rác ở tin nhắn văn bản hoặc ảnh chụp đề cương viết tay. <br> 4. (5 phút) Tự nhớ hoặc chép tay ra giấy/app ghi chú cá nhân. <br> 5. (1 phút) Tìm thông tin số tài khoản và cú pháp để chuyển tiền học/tiền quỹ. |
+| **Bottleneck** | **Bước 2 (Mất 15 phút):** Lọc tin rác thủ công bằng mắt trên luồng chat phân mảnh. |
+| **Impact** | Con bị phạt/thiếu đồ dùng học tập; đóng muộn tiền học; phụ huynh căng thẳng, trút giận lên con cái sau ngày làm việc kiệt sức. |
+| **Success Metric** (baseline → target, cách đo) | Thời gian cập nhật việc học: cần về dưới 6 phút/tối. <br> Tỷ lệ bỏ sót việc cần làm: về 0%. |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | 1. AI không tự động xác thực kế toán <br> 2. AI không tự phát hành chế tài / Công khai danh sách học sinh nợ học phí <br> 3. AI không tự suy diễn dữ liệu mập mờ <br> 4. AI không lưu trữ/chia sẻ hình ảnh biên lai, thông tin ngân hàng cá nhân trái phép |
 
 Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
 
--
+- **Phản biện 1:** Giáo viên là người phải bỏ công nhập/duyệt dữ liệu vào Bot, nhưng Phụ huynh lại là người hưởng lợi. Giáo viên vốn đã cực kỳ quá tải, tại sao họ phải tốn thêm thao tác để làm hài lòng phụ huynh nếu hệ thống không giải quyết nỗi đau của chính họ?
+    + Nhóm đồng ý, sản phẩm sẽ thất bại ở khâu triển khai (Onboarding) nếu không có động lực cho người phát tin. 
+    + Nhóm bổ sung giá trị trực tiếp cho Giáo viên: Bot AI không chỉ tóm tắt cho phụ huynh, mà còn tự động bóc tách biên lai, lập danh sách thu chi và tự động gửi tin nhắn nhắc nộp tiền 1-1. Giáo viên dùng hệ thống vì nó giúp chính họ tiết kiệm 2–3 tiếng làm sổ sách thủ công mỗi tuần. 
+- **Phản biện 2:** Nếu các phần mềm Sổ liên lạc điện tử hiện có (vnEdu, eNetViet) hoặc chính Zalo cập nhật một tính năng tóm tắt thông báo đơn giản, dự án của bạn sẽ bị đè bẹp như thế nào?
+    + Nhóm đồng ý, tính năng tóm tắt bằng AI thuần túy không phải là rào cản công nghệ bền vững. 
+    + Yếu tố phòng thủ của sản phẩm nằm ở khả năng xử lý dữ liệu phi cấu trúc thực tế tại Việt Nam (đề cương chép tay mờ, teencode, file ghi âm giọng địa phương) kết hợp với luồng đối soát tài chính tự động (OCR biên lai ngân hàng). Hơn nữa, định vị dự án không phải là một ứng dụng độc lập cạnh tranh với các 'ông lớn', mà là một mô-đun tích hợp (Plugin/White-label API) có thể bán lại cho chính các hệ thống Sổ liên lạc điện tử hiện hữu.
 
 ---
 
