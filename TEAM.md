@@ -35,7 +35,7 @@ Gợi ý vai trò (một người có thể giữ nhiều vai): điều phối t
 
 Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `HoVaTen-MSSV`.
 
-### Vũ Quang Minh
+### Vũ Quang Minh - 2A202603727
 
 **Phần việc phụ trách:**
 
@@ -98,7 +98,7 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 
 ---
 
-### Nguyễn Hoàng Gia An
+### Nguyễn Hoàng Gia An - 2A202603799
 
 **Phần việc phụ trách:**
 
