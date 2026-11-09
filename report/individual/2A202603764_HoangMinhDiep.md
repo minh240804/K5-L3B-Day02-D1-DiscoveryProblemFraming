@@ -177,7 +177,9 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?** Tôi thấy thêm nhiều lĩnh vực, nhiều công việc gặp khó khăn trong quy trình bình thường. 
 
-**6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?** Có. Ban đầu nhóm khá tập trung vào việc áp dụng Al và tự động hóa workflow trong giải quyết vấn đề. Sau đó, nhóm nhận ra cần hiểu rõ quy trình hiện tại, xác định công đoạn mất nhiều thời gian nhất rồi mới lựa chọn giải pháp phù hợp. Giải pháp phức tạp nhất chưa chắc đã giải quyết được bài toán.
+**6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?** Nhóm tôi đã từng rơi vào bẫy solution-first rất nặng ở giai đoạn đầu của CP5. Khi vừa chọn xong bài toán nhóm chat phụ huynh, phản xạ đầu tiên của cả nhóm là: "Hãy xây một con Bot AI Telegram/Zalo tự động nhảy vào nhóm chat cá nhân của lớp để cào tin nhắn và tóm tắt mỗi ngày!". Nhóm đã dành gần nửa buổi thảo luận chỉ để bàn xem nên dùng model LLM nào, dùng RAG ra sao để bot không bị trôi tin.
+
+Nhóm chỉ sực tỉnh khi đặt ra câu hỏi kiểm chứng bối cảnh: "Zalo có cho phép một con bot tự do vào đọc lén tin nhắn nhóm cá nhân của 40 phụ huynh không? Giáo viên có đồng ý cho bot vào nhóm không?". Lúc này, nhóm mới nhận ra mình chưa hề hiểu kỹ rào cản nền tảng (Platform Lock-in) và nỗi đau của Giáo viên. Nhóm đã lập tức dừng việc thảo luận giải pháp công nghệ, quay lại phân tích lại quy trình tương tác thực tế và phát hiện ra rằng giải pháp phải đi từ gốc: Giáo viên nạp dữ liệu thô vào Zalo OA riêng tư, AI bóc tách và gửi 1-1, đồng thời hỗ trợ Giáo viên đối soát thu chi để tạo động lực Win-Win cho cả hai bên.
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.** Có. Ban đầu tôi nghĩ AI có thể tự động tạo hoàn chỉnh User Story và Acceptance Criteria. Tuy nhiên, sau khi thảo luận, tôi nhận ra AI có thể bỏ sót edge case hoặc suy diễn sai business rules. Vì vậy, tôi đồng ý với hướng AI tạo bản nháp và cần con người phê duyệt.
 
