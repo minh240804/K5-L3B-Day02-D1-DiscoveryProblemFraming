@@ -277,8 +277,8 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạp trung bình (Medium Ambiguity × Medium Complexity)**
 
 **Vì sao:**
-- **Độ mơ hồ (Medium Ambiguity):** Tin nhắn trong nhóm chat phụ huynh hoàn toàn là ngôn ngữ tự nhiên không có cấu trúc cố định (tin dặn dò, câu hỏi, câu cảm ơn, sticker, thảo luận ngoài lề). AI cần hiểu ngữ cảnh để phân biệt chính xác đâu là "dặn dò/lịch thi/khoản thu" và đâu là "tin nhắn rác/trò chuyện".
-- **Độ phức tạp (Medium Complexity):** Quy trình gồm nhiều bước liên hoàn (nhận luồng tin nhắn → phân loại & trích xuất dữ liệu → soạn nháp bản tóm tắt/lịch nhắc → trình GVCN/Phụ huynh duyệt → phát thông báo ghim & cập nhật lịch), nhưng chưa đến mức cần một hệ thống tự động hoàn toàn không có con người kiểm soát.
+- **Độ mơ hồ (Medium Ambiguity):** Dữ liệu đầu vào từ GVCN rất đa dạng và không có cấu trúc cố định: văn bản gõ vội, ảnh chụp đề cương viết tay, file ghi âm dặn dò, ảnh chụp bill chuyển khoản từ phụ huynh. AI cần phối hợp LLM + OCR để đọc hiểu ngữ cảnh và trích xuất đúng thực thể (bài tập, lịch thi, khoản phí, số tiền).
+- **Độ phức tạp (Medium Complexity):** Quy trình gồm nhiều bước liên hoàn (Trigger tag `@BOT` / gửi ảnh bill → OCR & LLM phân tích, trích xuất dữ liệu → Soạn nháp bản tóm tắt / Cập nhật bảng đối soát quỹ → Gửi bản tóm tắt cá nhân hóa cho phụ huynh trong chat riêng với BOT), có sự xác nhận của con người (Human-in-the-loop).
 
 ---
 
@@ -286,28 +286,29 @@ Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạ
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 |---|---|---|---|---|
-| **No AI** (sửa quy trình) | Thỏa thuận quy tắc lớp: Khóa chat 1 chiều, GVCN tự ghim bài, phụ huynh tự tắt thông báo. | Phụ huynh 100% tuân thủ quy tắc; GVCN có đủ thời gian nhắn tin trả lời riêng 1-on-1 cho từng phụ huynh. | Quy tắc dễ bị phá vỡ khi có vụ việc nóng; GVCN bị quá tải tin nhắn riêng. | ❌ |
-| **Rule** | Dùng từ khóa cố định (`#thongbao`, `lịch thi`, `nộp tiền`) hoặc Regex để lọc tin nhắn. | Tất cả thông báo của GVCN đều soạn theo đúng cú pháp mẫu và chứa từ khóa cố định. | Bỏ sót các dặn dò viết tự nhiên không chứa từ khóa; báo nhầm khi phụ huynh thảo luận có chứa từ khóa. | ❌ *(Chỉ dùng làm trigger)* |
-| **Workflow** *(Rule + AI + Human)* | Rule bắt trigger tin nhắn → AI (LLM) phân loại, trích xuất sự kiện/dặn dò & soạn nháp Tóm tắt → Con người (GVCN/Phụ huynh) duyệt 1-click → Tự động tạo sự kiện lịch & phát thông báo. | Cần xử lý ngôn ngữ tự nhiên linh hoạt nhưng bắt buộc đảm bảo 100% độ chính xác của thông tin dặn dò. | Cần giao diện duyệt nhanh (1-click) để không làm chậm luồng truyền tin. | ✅ **CHỌN** |
-| **Agent** | AI tự động quản lý nhóm: Tự xóa tin nhắn rác, tự động trả lời phụ huynh, tự ra thông báo mới mà không cần duyệt. | AI có độ tin cậy 100% và được ủy quyền đại diện cho GVCN. | AI trả lời sai thông tin nhạy cảm (quỹ lớp, lịch thi); tự can thiệp gây bức xúc hoặc vi phạm riêng tư. | ❌ |
+| **No AI** (sửa quy trình) | GVCN bật cài đặt Zalo "chỉ Admin nhắn tin" (tạo 1 kênh thông báo 1 chiều + 1 nhóm thảo luận riêng). | Phụ huynh 100% tuân thủ quy tắc; GVCN có thời gian dò tay từng ảnh bill chuyển tiền và phụ huynh chấp nhận tự lội kênh 1 chiều. | Phụ huynh vẫn phải tự lội kênh thông báo; GVCN quá tải thủ công đối soát hàng chục ảnh chuyển khoản. | ❌ |
+| **Rule** | Dùng từ khóa/Hashtag cố định (`#thongbao`, `#noptien`, cú pháp chuyển khoản cố định). | Tất cả GVCN và phụ huynh gõ đúng 100% cú pháp mẫu không sai một ký tự. | Phụ huynh ghi sai cú pháp chuyển khoản sẽ bị bỏ sót; không thể dùng Rule để đọc ảnh đề cương viết tay hay file ghi âm. | ❌ |
+| **Workflow** *(Rule + LLM/OCR + Human)* | Tag `@BOT` trigger → LLM + OCR xử lý văn bản/ảnh bill/đề cương viết tay → Trích xuất danh sách công việc & đối soát quỹ → Gửi bản tóm tắt riêng cho từng phụ huynh (có bước duyệt nháp). | Cần xử lý linh hoạt dữ liệu đa phương tiện (văn bản, hình ảnh, âm thanh) nhưng đảm bảo 100% độ chính xác nhờ con người duyệt. | Cần tối ưu thời gian xử lý OCR và giao diện duyệt nháp 1-click cho GVCN/Phụ huynh. | ✅ **CHỌN** |
+| **Agent** | AI tự động quản lý hoàn toàn: Tự duyệt tiền vào tài khoản ngân hàng thật, tự động nhắn tin nhắc nhở/phạt học sinh mà không qua con người. | AI có độ tin cậy tuyệt đối 100% và được ủy quyền pháp lý đại diện nhà trường. | Rủi ro cực lớn nếu OCR đọc nhầm số tiền chuyển khoản hoặc nhầm lịch thi gây hậu quả trực tiếp cho học sinh. | ❌ |
 
-**Mức chọn:** **Workflow (Rule + AI + Human-in-the-loop)**
+**Mức chọn:** **Workflow (Rule + LLM/OCR + Human-in-the-loop)**
 
 **Vì sao không chọn mức đơn giản hơn (No AI / Rule):**
-- **Rule đơn thuần** thất bại vì tin nhắn trong group chat hoàn toàn là văn bản tự do. Nếu GVCN nhắn *"Mai các con nhớ mang kéo thủ công nhé"* mà không dùng từ khóa `#thongbao`, Rule sẽ bỏ sót hoàn toàn.
-- **No AI** (chỉ khóa chat 1 chiều bằng quy trình) sẽ đẩy toàn bộ thắc mắc của phụ huynh sang tin nhắn riêng 1-on-1, khiến GVCN quá tải công việc trả lời lặp đi lặp lại.
+- **Rule đơn thuần** hoàn toàn bất lực trước ảnh chụp đề cương viết tay, file ghi âm dặn dò hoặc ảnh chụp bill chuyển khoản bị ghi sai cú pháp.
+- **No AI** chỉ giải quyết được việc khóa nhóm chat chứ không giúp phụ huynh giảm thời gian tổng hợp việc học từ 32 phút xuống 2 phút, đồng thời tạo thêm gánh nặng thủ công cho GVCN khi kiểm tra tiền quỹ.
+
 ---
 
 ### 6.3. AI Canvas rút gọn
 
 | Thành phần | Nội dung |
 |---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | **1.** Phân loại tin nhắn (Thông báo/Dặn dò vs. Tin nhắn rác/Thảo luận).<br>**2.** Trích xuất thông tin có cấu trúc (Thời gian, Môn học, Nhiệm vụ cần làm).<br>**3.** Soạn nháp bản Tóm tắt ngắn gọn và câu trả lời FAQ cho GVCN. |
-| **Judgment** — con người cân nhắc, quyết định gì? | **GVCN / Phụ huynh:** Xát nhận bản tóm tắt/lịch nhắc AI soạn nháp đã chuẩn xác chưa (1-click Approve/Edit) trước khi cập nhật vào bảng tin chung. |
-| **Action** — hành động cuối cùng là gì, ai làm? | Hệ thống tự động tạo **Thẻ thông báo ghim**, tự động thêm **Sự kiện vào Lịch (Calendar Event)** và gửi nút xác nhận 1-click **"Đã đọc/Đã nắm"** cho phụ huynh. |
-| **Outcome** — đo kết quả bằng gì? | **1.** Giảm thời gian lội tin nhắn của phụ huynh từ 30 phút xuống < 3 phút/ngày.<br>**2.** Giảm 80% tin nhắn rác xác nhận ("vâng ạ", sticker).<br>**3.** 0% phụ huynh bị bỏ lỡ lịch thi/bài tập quan trọng. |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | **Input:** Luồng tin nhắn văn bản từ nhóm chat (Zalo/Messenger), dữ liệu thời gian thực. Có sẵn 100% từ luồng chat của lớp. |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Phản hồi 1-click từ người dùng: Nút **"Báo sai thông tin"**, **"Chỉnh sửa tóm tắt"** hoặc **"Đánh dấu là tin rác"** để cập nhật prompt/few-shot examples cho AI. |
+| **Prediction** — AI dự đoán / tạo ra gì? | **1.** OCR trích xuất dữ liệu từ ảnh bill chuyển tiền (Tên, Số tiền, Cú pháp).<br>**2.** OCR/LLM trích xuất bài tập, lịch thi từ ảnh đề cương viết tay, file ghi âm và văn bản dặn dò.<br>**3.** Tạo bản tóm tắt duy nhất (Single Digest) chứa danh sách việc cần làm (Action items) cá nhân hóa cho từng phụ huynh. |
+| **Judgment** — con người cân nhắc, quyết định gì? | **GVCN:** Duyệt bảng đối soát nộp quỹ và kiểm tra bản tóm tắt dặn dò chung trước khi phát hành.<br>**Phụ huynh:** Duyệt checklist việc cần làm của con vào cuối ngày trên chat riêng với BOT. |
+| **Action** — hành động cuối cùng là gì, ai làm? | Hệ thống tự động cập nhật danh sách nộp tiền lớp và gửi **Bản tóm tắt duy nhất (chiều tối)** kèm nút 1-click "Hoàn thành" trực tiếp vào chat riêng của từng phụ huynh với BOT. |
+| **Outcome** — đo kết quả bằng gì? | **1.** Thời gian phụ huynh cập nhật việc học: **32 phút/tối → dưới 2 phút/tối**.<br>**2.** Tỷ lệ bỏ sót việc cần làm (action items): **15–20% → 0%**.<br>**3.** Thời gian GVCN đối soát quỹ lớp: giảm 90%. |
+| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | Ảnh chụp bill chuyển tiền, ảnh chụp đề cương viết tay, file ghi âm, tin nhắn gõ vội có tag `@BOT`. Có sẵn 100% từ nhóm chat Zalo. |
+| **Feedback** — lấy phản hồi ở đâu để cải thiện? | Nút **"Báo sai thông tin"** (khi OCR đọc nhầm bill/đề cương) hoặc **"Xác nhận chuẩn"** 1-click từ phụ huynh/GVCN để liên tục cập nhật prompt và mô hình OCR. |
 
 ---
 
@@ -315,12 +316,12 @@ Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạ
 
 - **Người dùng muốn được hỗ trợ (augment) hay giao hẳn việc (automate)? Bằng chứng:**
   - **Người dùng muốn được HỖ TRỢ (Augment).**
-  - **Bằng chứng:** Kết quả kiểm chứng (CP4) cho thấy thông báo học tập của con trẻ gắn liền với trách nhiệm và kết quả học tập thực tế. Phụ huynh và GVCN không tin tưởng để AI tự động giao tiếp hay tự ra quyết định thay mình. Họ cần AI **soạn nháp tóm tắt và trích xuất thông tin**, còn con người giữ quyền duyệt cuối cùng (Human-in-the-loop) để đảm bảo độ chính xác 100%.
+  - **Bằng chứng:** Việc học tập và đóng phí của con trẻ gắn liền với trách nhiệm gia đình và nhà trường. Phụ huynh và GVCN không chấp nhận giao 100% việc đối soát tiền bạc hay nhắc lịch thi cho AI tự quyết định mà cần AI **soạn nháp tóm tắt và tự động trích xuất**, con người giữ quyền kiểm tra/xác nhận cuối cùng.
 
 - **AI sai kiểu nào tệ hơn, báo nhầm (False Positive) hay bỏ sót (False Negative)? Vì sao, và thiết kế đã xử lý thế nào:**
   - **BỎ SÓT (False Negative) TỆ HƠN RẤT NHIỀU.**
-  - **Vì sao:** Nếu AI bỏ sót một dặn dò quan trọng (ví dụ: lịch thi giữa kỳ, đổi lịch học, chuẩn bị dụng cụ học tập), phụ huynh sẽ không nhận được nhắc nhở → con bị phạt hoặc thiếu chuẩn bị. Ngược lại, nếu báo nhầm (chuyển một thảo luận thường thành thông báo nháp), phụ huynh chỉ tốn 2 giây để lướt qua bỏ qua.
-  - **Thiết kế đã xử lý:** Đặt ngưỡng nhạy (Sensitivity Threshold) của AI nghiêng hẳn về **Recall** (ưu tiên trích xuất thà thừa còn hơn bỏ sót). Tất cả các nội dung có dấu hiệu là dặn dò đều được trích xuất nháp và hiển thị nổi bật cho GVCN/Phụ huynh xác nhận 1-click, đảm bảo tỷ lệ bỏ sót = 0%.
+  - **Vì sao:** Nếu AI bỏ sót một bài tập về nhà, lịch thi hoặc khoản phí cần đóng, con sẽ bị phạt, thiếu đồ dùng học tập hoặc đóng muộn tiền học. Nếu báo nhầm (đưa một tin nhắn thảo luận vào nháp), phụ huynh chỉ tốn 2 giây để lướt qua bỏ chọn.
+  - **Thiết kế đã xử lý:** Đặt cấu hình AI ưu tiên tối đa chỉ số **Recall** (thà trích xuất thừa còn hơn bỏ sót). Mọi tin nhắn/hình ảnh có tag `@BOT` hoặc chứa thông tin dặn dò đều được đưa vào bản nháp để người dùng xác nhận.
 
 ---
 
@@ -330,15 +331,15 @@ Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạ
 
 | Trường | Nội dung |
 |---|---|
-| **Actor** | Phụ huynh có con học Tiểu học/THCS và Giáo viên chủ nhiệm (GVCN). |
-| **Quy trình** | Nhà trường/GVCN phát thông báo vào nhóm chat lớp (Zalo/Messenger) → Phụ huynh đọc, nhắn tin xác nhận ("vâng ạ"), đặt câu hỏi và thảo luận → GVCN giải đáp thắc mắc. |
-| **Bottleneck** | Tin nhắn phản hồi hàng loạt ("vâng ạ", sticker) và thảo luận lan man làm trôi dặn dò chính; phụ huynh phải lội hàng trăm tin nhắn; GVCN bị ngập trong thắc mắc trùng lặp. |
-| **Impact** | Phụ huynh căng thẳng, bỏ lỡ lịch thi/bài tập của con (mất 20–30 phút/ngày lội tin); GVCN quá tải tâm lý và mệt mỏi ngoài giờ làm việc. |
-| **Success Metric** (baseline → target, cách đo) | - **Baseline:** Mất 20–30 phút/ngày lội tin; 70% phụ huynh stress; lỡ 1–2 dặn dò/tháng.<br>- **Target:** Giảm thời gian lội tin xuống < 3 phút/ngày; 0% trôi dặn dò; giảm 80% tin nhắn rác xác nhận.<br>- **Cách đo:** Log thời gian tương tác trên ứng dụng/bộ lọc & khảo sát phụ huynh sau 1 tháng sử dụng. |
-| **Boundary** | Không thay thế ứng dụng quản lý học bạ/điểm số chính thức của nhà trường; không can thiệp vào cuộc trò chuyện cá nhân ngoài mục đích học tập. |
-| **AI intervention point** | Phân loại tin nhắn quan trọng vs. tin rác + Trích xuất & tóm tắt tự động dặn dò/lịch thi + Soạn nháp câu trả lời FAQ cho GVCN. |
-| **Mức chọn** | **Workflow (Rule + AI + Human-in-the-loop)** |
-| **Rủi ro & người kiểm tra** | **Rủi ro:** AI hiểu sai ngữ cảnh hoặc trích xuất sai ngày/giờ.<br>**Người kiểm tra:** GVCN và Phụ huynh duyệt 1-click trước khi lưu/ghim thông báo. |
+| **Actor** | **Phụ huynh học sinh** (người tiếp nhận thông tin & đóng phí), **Giáo viên chủ nhiệm** (người phát tin & quản lý quỹ lớp), **Học sinh** (đối tượng bị ảnh hưởng trực tiếp nếu phụ huynh quên/bỏ lỡ công việc). |
+| **Quy trình** | Chiều tối các ngày trong tuần: Phụ huynh mở 3–5 nhóm chat Zalo → Lội qua tin tán gẫu/sticker (mất 10 phút) → Tìm bài tập rải rác trong tin nhắn/ảnh đề cương viết tay → Tìm STK/cú pháp chuyển tiền → Chuyển tiền và gửi ảnh bill lên nhóm → GVCN dò tay từng bill. |
+| **Bottleneck** | **Lọc tin rác thủ công bằng mắt (bước 2 - mất 10 phút/tối)** trên luồng chat phân mảnh và **đối soát thủ công ảnh bill chuyển tiền** của GVCN. |
+| **Impact** | Con bị phạt/thiếu đồ dùng học tập; đóng muộn tiền học; phụ huynh căng thẳng, trút giận lên con cái sau ngày làm việc kiệt sức; GVCN kiệt sức vì kiểm tra bill thủ công. |
+| **Success Metric** (baseline → target, cách đo) | - **Thời gian cập nhật việc học:** 32 phút/tối → dưới 2 phút/tối.<br>- **Tỷ lệ bỏ sót việc cần làm (action items):** 15–20% → 0%.<br>- **Cách đo:** Log thời gian tương tác trên chat riêng với BOT & thống kê phản hồi bỏ sót việc của phụ huynh/GVCN hàng tuần. |
+| **Boundary** | Không thay thế ứng dụng quản lý học bạ/điểm số chính thức của nhà trường; chỉ tập trung vào luồng giao tiếp dặn dò hàng ngày và tự động hóa đối soát thu phí qua nhóm chat. |
+| **AI intervention point** | OCR đọc ảnh bill chuyển tiền & ảnh đề cương viết tay + LLM phân loại tin nhắn, trích xuất dặn dò từ văn bản/ghi âm và gửi bản tóm tắt cá nhân hóa trong chat riêng với BOT. |
+| **Mức chọn** | **Workflow (Rule + LLM/OCR + Human-in-the-loop)** |
+| **Rủi ro & người kiểm tra** | **Rủi ro:** AI OCR đọc nhầm nét chữ đề cương quá xấu hoặc đọc sai số tiền trên bill.<br>**Người kiểm tra:** GVCN (duyệt bảng quỹ) & Phụ huynh (duyệt bản tóm tắt cá nhân trên BOT). |
 
 ---
 
@@ -346,10 +347,10 @@ Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạ
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| **Actor** | Chỉ có Phụ huynh. | Phụ huynh + Giáo viên chủ nhiệm (GVCN). | Kiểm chứng cho thấy GVCN cũng là nạn nhân chịu quá tải tin nhắn và là người nắm nguồn tạo thông tin chính. |
-| **Scope Giải pháp** | Xây dựng ứng dụng mạng xã hội học tập độc lập hoàn toàn mới. | Xây dựng Bộ lọc thông báo tự động (Notification Filter Extension / Bot Assistant) tích hợp trên Zalo/Messenger. | Phụ huynh và giáo viên ngại cài thêm app mới; tích hợp trực tiếp giúp loại bỏ rào cản thói quen sử dụng. |
-| **Mức can thiệp AI** | Autonomous Agent (AI tự động quản lý và trả lời trong nhóm). | Workflow (Rule + AI + Human-in-the-loop). | Người dùng cần sự an toàn tuyệt đối với thông tin học tập của con, không chấp nhận rủi ro AI tự ra quyết định. |
-| **Success Metric** | Số lượng người dùng tải và đăng ký app mới. | Thời gian lội tin nhắn giảm (30p → 3p) & Tỷ lệ trôi dặn dò quan trọng = 0%. | Tập trung giải quyết trực tiếp giá trị cốt lõi (Value & Efficiency) thay vì chạy theo chỉ số tăng trưởng ảo. |
+| **Actor** | Chỉ có Phụ huynh. | Phụ huynh + GVCN + Học sinh. | GVCN cũng chịu gánh nặng đối soát bill tiền quỹ thủ công; Học sinh là đối tượng gánh chịu hậu quả nếu phụ huynh bỏ lỡ thông tin. |
+| **AI Solution** | Chỉ tóm tắt tin nhắn văn bản chung trong group. | LLM + OCR xử lý đa phương tiện (văn bản, ảnh đề cương viết tay, file ghi âm, ảnh bill chuyển tiền). | Đúng thực tế giao tiếp: GVCN thường chụp đề cương viết tay, gửi ghi âm hoặc yêu cầu phụ huynh gửi ảnh bill chuyển tiền. |
+| **Kênh đầu ra (Output)** | Phát thông báo chung lại vào nhóm chat lớp. | Gửi **Bản tóm tắt duy nhất** vào chat riêng giữa BOT và từng Phụ huynh. | Phụ huynh không phải vào nhóm chat lội tin nữa; giải quyết tận gốc vấn đề phân mảnh thông tin. |
+| **Success Metric** | Giảm thời gian lội tin nhắn chung chung. | Thời gian cập nhật việc học (32p => <2p/tối) & Tỷ lệ bỏ sót action items (15-20% => 0%). | Bám sát đúng các chỉ số đo lường hiệu quả cụ thể trong Job Story của Problem Card #1. |
 
 ---
 
@@ -357,10 +358,12 @@ Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạ
 
 | # | Tiêu chí | Đạt khi | Không đạt khi |
 |---:|---|---|---|
-| **1** | **Độ chính xác trích xuất thực thể** | Trích xuất đúng các trường: Ngày/Giờ, Môn học, Nhiệm vụ cần làm, Khoản phí từ tin nhắn của GVCN. | Trích xuất sai ngày/giờ, nhầm lẫn giữa lịch học và lịch thi, hoặc bỏ sót thông tin khoản thu. |
-| **2** | **Tỷ lệ bỏ lỡ thông báo ** | các tin nhắn dặn dò/thông báo chính thức từ GVCN đều được gắn nhãn và trích xuất thành công vào bản nháp. | Bỏ sót tin nhắn có chứa dặn dò của GVCN, khiến thông báo không được đưa vào luồng tóm tắt. |
-| **3** | **Độ ngắn gọn của bản tóm tắt** | Bản tóm tắt ngắn gọn dưới 50 từ, định dạng danh sách kèm nút bấm hành động rõ ràng. | Bản tóm tắt dài dòng, giữ nguyên các câu từ thừa mứa ("vâng ạ", chúc) hoặc thiếu hướng dẫn hành động. |
+| **1** | **Độ chính xác OCR Bill chuyển tiền (Financial OCR Accuracy)** | Trích xuất chính xác 100% các trường: Số tiền, Tên người chuyển, Cú pháp/Nội dung chuyển khoản từ ảnh chụp bill. | Trích xuất sai số tiền, đọc nhầm tên người chuyển hoặc bỏ sót bill chuyển khoản của phụ huynh. |
+| **2** | **Độ chính xác trích xuất dặn dò (Action Item Extraction Accuracy)** | Trích xuất đầy đủ và đúng 100% các mục: Bài tập về nhà, Lịch thi/học, Đồ dùng cần chuẩn bị từ ảnh đề cương viết tay, ghi âm hoặc tin nhắn. | Trích xuất sai hạn nộp bài, đọc thiếu bài tập trong ảnh đề cương hoặc nhầm lẫn giữa các môn học. |
+| **3** | **Tỷ lệ bỏ lỡ thông tin dặn dò (Recall Rate)** | 100% tin nhắn/hình ảnh/ghi âm được GVCN tag `@BOT` đều được xử lý và đưa vào bản nháp tóm tắt. | Bỏ sót tin nhắn có tag `@BOT`, khiến dặn dò quan trọng không xuất hiện trong bản tóm tắt của phụ huynh. |
+| **4** | **Định dạng & Tính cá nhân hóa của bản tóm tắt (Digest Quality)** | Bản tóm tắt gửi riêng cho phụ huynh ngắn gọn (< 100 từ), phân rõ 3 phần (Bài tập - Lịch thi - Khoản phí) kèm checklist 1-click. | Bản tóm tắt dài dòng, giữ nguyên tin nhắn rác hoặc không phân chia rõ ràng các mục hành động cần làm. |
 
+---
 
 ## 8. Quyết định (CP6)
 
@@ -368,30 +371,56 @@ Bài của nhóm nằm ở ô: **Độ mơ hồ trung bình × Độ phức tạ
 
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | | |
-| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | | |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | | |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | | |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | **Thấp (An toàn)** | Phụ huynh mất tới 32 phút/tối để lội tin nhắn phân mảnh; GVCN kiệt sức vì kiểm tra từng bill tiền quỹ. Nhu cầu có 1 bản tóm tắt duy nhất và tự động hóa đọc bill là cực kỳ cấp thiết. |
+| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | **Trung bình** | Phụ huynh chỉ cần nhận 1 tin nhắn tóm tắt trong chat riêng với BOT và bấm nút 1-click. Tuy nhiên, rủi ro nằm ở việc GVCN phải kiểm tra bản nháp nếu ảnh đề cương viết tay quá mờ/xấu. |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | **Thấp (An toàn)** | Công nghệ LLM và OCR hiện tại (như Gemini 1.5 Flash / GPT-4o / Cloud Vision API) xử lý rất tốt tiếng Việt, đọc được nét chữ viết tay và ảnh chụp giao diện ngân hàng Việt Nam. |
+| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | **Trung bình** | Phụ thuộc vào chính sách API Zalo OA / Bot Telegram và quy định bảo mật hình ảnh chuyển tiền/thông tin cá nhân của học sinh. Chi phí gọi API OCR + LLM cần được tối ưu. |
+
+---
 
 ### 8.2. Kết luận
 
-**Quyết định:** Go / Not Yet / No-Go
+**Quyết định:** **GO (Triển khai Pilot)**
 
 **Lý do:**
+Bài toán giải quyết trực tiếp nỗi đau lớn của cả Phụ huynh (tốn 32 phút/tối) và GVCN (đối soát bill thủ công). Đã xác định rõ phương án không dùng AI (chỉ khóa nhóm 1 chiều) không giải quyết tận gốc vấn đề, trong khi mô hình Workflow (LLM + OCR + Human-in-the-loop) hoàn toàn khả thi về mặt kỹ thuật.
 
 **Nếu Go — pilot nhỏ nhất:**
+- **Quy mô:** Thử nghiệm trên **2–3 lớp học** (khoảng 100 phụ huynh, 3 GVCN).
+- **Hình thức:** Triển khai 1 Zalo OA Bot / Telegram Bot vào nhóm chat lớp.
+- **Tính năng core:**
+  1. Phụ huynh/GVCN tag `@BOT` khi gửi ảnh đề cương viết tay, file ghi âm hoặc dặn dò → BOT trích xuất danh sách công việc.
+  2. Phụ huynh gửi ảnh bill chuyển tiền có tag `@BOT` → BOT tự động OCR và đối soát danh sách nộp quỹ cho GVCN.
+  3. Gửi **Bản tóm tắt duy nhất** tự động vào chat riêng với từng phụ huynh vào 19h00 hằng ngày.
 
-**Nếu Not Yet — cần kiểm chứng gì trước:**
-
-**Nếu No-Go — nên làm gì thay AI:**
-
-**Ngưỡng dừng** (nếu sau … mà … thì quay về …):
+**Ngưỡng dừng (Pivot / Drop Threshold):**
+> *Nếu sau **3 tuần pilot** mà **> 20% ảnh bill chuyển tiền** bị OCR đọc sai phải sửa tay, HOẶC **> 15% phụ huynh** phản ánh bản tóm tắt vẫn bỏ sót bài tập của con, nhóm sẽ dừng mô hình Workflow AI này và chuyển về giải pháp **Rule đơn thuần + Google Form/Sheet** tự động đơn giản.*
 
 ---
 
 ## 9. Hạn chế và hướng tiếp theo
 
--
+### 9.1. Hạn chế hiện tại của dự án
+1. **Chất lượng hình ảnh đầu vào:** Ảnh chụp đề cương viết tay quá mờ, chữ quá xấu hoặc ảnh bill chuyển khoản bị che mờ có thể làm giảm độ chính xác của OCR.
+2. **Phụ thuộc nền tảng:** Phụ thuộc vào chính sách tích hợp Bot và giới hạn API của Zalo / Messenger.
+3. **Bảo mật dữ liệu tài chính & riêng tư:** Xử lý ảnh bill chuyển khoản yêu cầu cam kết bảo mật cao về thông tin tài khoản ngân hàng và số điện thoại cá nhân.
+
+---
+
+### 9.2. Hướng tiếp theo (Next Steps)
+
+1. **Giai đoạn 1 — Tối ưu OCR & LLM Prompt (Tuần 1–3):**
+   - Xây dựng bộ dataset 100+ ảnh bill chuyển tiền ngân hàng (VietQR, Momo, ZaloPay...) và 50+ ảnh đề cương viết tay thực tế để fine-tune prompt cho OCR và LLM.
+   - Thử nghiệm các kịch bản báo sai để đảm bảo chỉ số Recall đạt 100%.
+
+2. **Giai đoạn 2 — Triển khai MVP Pilot (Tuần 4–6):**
+   - Triển khai thử nghiệm 3 tuần tại 3 lớp mục tiêu.
+   - Đo lường chỉ số thực tế: Thời gian cập nhật việc học của phụ huynh (mục tiêu < 2 phút/tối) và tỷ lệ bỏ sót action items (mục tiêu 0%).
+
+3. **Giai đoạn 3 — Mở rộng tính năng (Giai đoạn tiếp theo):**
+   - Tự động đồng bộ checklist bài tập và lịch thi vào Google Calendar / Apple Reminders của phụ huynh.
+   - Tích hợp tính năng tự động nhắc nộp tiền quỹ/học phí riêng cho từng phụ huynh chưa hoàn thành trước hạn.
+
 
 ## 10. Tài liệu tham khảo
 
