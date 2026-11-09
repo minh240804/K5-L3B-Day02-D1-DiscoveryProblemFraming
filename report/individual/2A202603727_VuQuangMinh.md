@@ -6,11 +6,11 @@
 
 ## 1. Thông tin học viên
 
-- Họ tên:
-- MSSV:
-- Email trường (không bắt buộc, repo có thể để public):
-- Tên nhóm:
-- Link repo nhóm:
+- Họ tên: VuQuangMinh
+- MSSV: 2A202603727
+- Email trường (không bắt buộc, repo có thể để public): 26ai.minhvq3@vinuni.edu.vn
+- Tên nhóm: D1
+- Link repo nhóm: https://github.com/minh240804/K5-L3B-Day02-D1-DiscoveryProblemFraming
 
 ---
 
@@ -20,14 +20,13 @@ Lăng kính: **Lặp lại** · **Tốn thời gian** · **Cần đọc, tổng 
 
 | # | Lăng kính | Job Story: Khi… tôi muốn… để… | Ai chịu ảnh hưởng? | Dấu hiệu thật (thời gian, tần suất, số người, bằng chứng) |
 |---:|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
-| 4 | | | | |
-| 5 | | | | |
-| 6 | | | | |
-| 7 | | | | |
-| 8 | | | | |
+| 1 | **Tốn thời gian** | Khi nhận yêu cầu từ khách hàng, tôi muốn tổng hợp và phân tích các yêu cầu thành tài liệu thống nhất để Developer và Tester có thể hiểu đúng phạm vi công việc. | BA, Dev, Tester | Theo nghiên cứu của Carnegie Mellon Software Engineering Institute (SEI), khoảng 35,25% lỗi trong quá trình phát triển phần mềm liên quan đến Requirements. |
+| 2 | **Tốn thời gian** | Khi muốn kiểm tra giá cước xe, tôi muốn một cách tiện lợi hơn tổng hợp từ nhiều nguồn để thuân tiện trong việc tìm kiếm | Người đặt, Chủ đại lý | Giá dịch vụ gọi xe thay đổi theo cung cầu, thời tiết và thời điểm. Người dùng phải kiểm tra nhiều ứng dụng để tìm giá phù hợp. |
+| 3 | **Cần đọc, tổng hợp nhiều thông tin** | Khi tìm kiếm ciệc trên các nền tảng, tôi muốn tìm các công việc phù hợp cả về yêu cầu trình độ và mức lương để việc tìm kiếm chính xác | Ứng viên |  |
+| 4 | **Lặp lại** | Khi nhận một Bug mới, tôi muốn hệ thống tự động phân loại Bug theo mức độ nghiêm trọng, module và người phụ trách để giảm thao tác phân loại thủ công. | Tester, Developer, PM | Mỗi ngày có nhiều Bug; các bước phân loại gần như giống nhau; phải nhập lại thông tin trên Jira. |
+| 5 |  **Cần đọc, tổng hợp nhiều thông tin** | Khi muốn kiểm soát chi tiêu cuối tháng, tôi muốn tổng hợp giao dịch từ hóa đơn, ví điện tử và tài khoản ngân hàng để hiểu tiền đã được sử dụng như thế nào. | Cá nhân, gia đình | Giao dịch phát sinh hằng ngày; dữ liệu phân tán ở nhiều ứng dụng; khó nhớ các khoản chi nhỏ. |
+
+
 
 **Nếu có dùng AI để gợi ý thêm:** ý nào AI gợi ý mà bạn giữ lại, ý nào bỏ và vì sao.
 
@@ -41,27 +40,26 @@ Lăng kính: **Lặp lại** · **Tốn thời gian** · **Cần đọc, tổng 
 
 | Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
 |---:|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | Tra cứu giá cước | Nhu cầu thường xuyên, nhiều nhà cung cấp và mức giá có thể thay đổi theo thời gian. | Cần nhiều yếu tố quyết định hơn chỉ là giá |
+| 2 | TÌm việc| Vấn đề phổ biến, Các nền tảng lớn có nhiều công viẹc | Khó đánh giá độ tin cậy tuyệt đối. Nhiều công việc cũng không phải do công ty đăng |
+| 3 | Quản lý chi tiêu| Nhiều người gặp, phổ biến | Sử dụng nhiều thông tin, Không thể chắc ở tiền mặt, Phụ thuộc nhiều vào quyền cũng như bên thứ 3 |
 
 ### Problem Card #1
 
 | Trường | Nội dung |
 |---|---|
-| Job Story | Khi …, tôi muốn …, để … |
-| Actor | |
-| Thời điểm / bối cảnh | |
-| Quy trình hiện tại (3–7 bước) | |
-| Bottleneck (bước nào, mất bao nhiêu phút) | |
-| Impact (nếu không giải thì sao) | |
-| Success metric (baseline → target) | |
-| Phương án không dùng AI | |
-| Giả thuyết về AI (nếu có) | |
-| Cảm nhận nhanh | No AI / Rule / Workflow / Agent / Chưa biết |
-
+| Job Story | Khi muốn kiểm tra giá cước xe, tôi muốn một cách tiện lợi hơn tổng hợp từ nhiều nguồn để thuân tiện trong việc tìm kiếm |
+| Actor | Người dùng ( đặt xe) |
+| Thời điểm / bối cảnh | Mọi thời điểm /  Người cân di chuyển  |
+| Quy trình hiện tại (3–7 bước) |1. Xác định điểm đi và điểm đến. 2. Mở từng ứng dụng. 3. Nhập thông tin hành trình. 4. Chờ hiển thị giá. 5. So sánh và lựa chọn. |
+| Bottleneck (bước nào, mất bao nhiêu phút) | Bước 2–4: Phải chuyển đổi giữa nhiều ứng dụng, nhập lại thông tin và chờ kết quả. Bạn ước tính mất 3 phút/app, tổng cộng khoảng 10 phút khi kiểm tra 3–4 ứng dụng. Cần đo thực tế để xác nhận. |
+| Impact (nếu không giải thì sao) | Mất thời gian tìm kiếm; có thể bỏ lỡ mức giá hoặc lựa chọn phù hợp hơn. Đặc biệt bất tiện khi cần đặt xe nhanh.  |
+| Success metric (baseline → target) | muốn giảm thời gian thực tế so sánh tương đương với việc tìm từng app (10p -  3p)  |
+| Phương án không dùng AI | Xây dựng hệ thống tích hợp dữ liệu/API từ các nhà cung cấp, truy vấn đồng thời và hiển thị bảng so sánh. |
+| Giả thuyết về AI (nếu có) | AI có thể phân tích nhu cầu người dùng, đánh giá các phương án theo giá, thời gian chờ, thời gian di chuyển và đưa ra đề xuất phù hợp. |
+| Cảm nhận nhanh | Workflow + Agent |
 Quy trình nháp hiện tại:
-
+ 
 ```text
 
 ```
@@ -70,43 +68,30 @@ Quy trình nháp hiện tại:
 
 | Trường | Nội dung |
 |---|---|
-| Job Story | Khi …, tôi muốn …, để … |
-| Actor | |
-| Thời điểm / bối cảnh | |
-| Quy trình hiện tại (3–7 bước) | |
-| Bottleneck (bước nào, mất bao nhiêu phút) | |
-| Impact (nếu không giải thì sao) | |
-| Success metric (baseline → target) | |
-| Phương án không dùng AI | |
-| Giả thuyết về AI (nếu có) | |
-| Cảm nhận nhanh | No AI / Rule / Workflow / Agent / Chưa biết |
-
-Quy trình nháp hiện tại:
-
-```text
-
-```
+| Job Story | Khi tìm kiếm ciệc trên các nền tảng, tôi muốn tìm các công việc phù hợp cả về yêu cầu trình độ và mức lương để việc tìm kiếm chính xác |
+| Actor | Ứng viên |
+| Thời điểm / bối cảnh | Mọi thời điểm   |
+| Quy trình hiện tại (3–7 bước) | 1. Truy cập các nền tảng tuyển dụng. 2. Nhập từ khóa và thiết lập bộ lọc. 3. Đọc mô tả công việc và yêu cầu tuyển dụng. 4. Đối chiếu yêu cầu với CV và năng lực bản thân. 5. So sánh mức lương, phúc lợi và các điều kiện khác. 6. Chọn công việc phù hợp và gửi hồ sơ. |
+| Bottleneck (bước nào, mất bao nhiêu phút) |Bước 3–5: Ứng viên phải đọc và phân tích từng JD, đối chiếu với năng lực cá nhân, sau đó tự so sánh giữa các công việc. Các công ty có cách mô tả yêu cầu khác nhau nên khó đánh giá mức độ phù hợp một cách nhất quán.|
+| Impact (nếu không giải thì sao) | Tốn nhiều thời gian tìm kiếm; có thể bỏ lỡ công việc phù hợp, ứng tuyển vào vị trí không đáp ứng yêu cầu hoặc không phù hợp với mong muốn về lương và phúc lợi.  |
+| Success metric (baseline → target) | 	Đo thời gian từ lúc bắt đầu tìm kiếm đến khi có danh sách công việc phù hợp. Ví dụ: giảm từ baseline đo thực tế xuống không quá 10 phút. Đồng thời theo dõi tỷ lệ công việc được đề xuất mà ứng viên đánh giá là phù hợp.  |
+| Phương án không dùng AI | Thiết lập bộ lọc và nhiều tiêu chí, khóa theo từ khóa |
+| Giả thuyết về AI (nếu có) | Sự dụng mô hình ngôn ngữ kết hợp sematic |
+| Cảm nhận nhanh | Rule  |
 
 ### Problem Card #3
 
 | Trường | Nội dung |
 |---|---|
-| Job Story | Khi …, tôi muốn …, để … |
-| Actor | |
-| Thời điểm / bối cảnh | |
-| Quy trình hiện tại (3–7 bước) | |
-| Bottleneck (bước nào, mất bao nhiêu phút) | |
-| Impact (nếu không giải thì sao) | |
-| Success metric (baseline → target) | |
-| Phương án không dùng AI | |
-| Giả thuyết về AI (nếu có) | |
-| Cảm nhận nhanh | No AI / Rule / Workflow / Agent / Chưa biết |
-
-Quy trình nháp hiện tại:
-
-```text
-
-```
+| Job Story | Khi muốn kiểm soát chi tiêu cuối tháng, tôi muốn tổng hợp giao dịch từ hóa đơn, ví điện tử và tài khoản ngân hàng để hiểu tiền đã được sử dụng như thế nào. |
+| Actor | Người có khoản chi tiêu  |
+| Thời điểm / bối cảnh | Mọi thời điểm /  Người sử dụng  |
+| Quy trình hiện tại (3–7 bước) |1. Mở app ngân hàng / thanh toán 2. Vòa phần lịch sủ. 3. QUan sát và ghi lại các thanh toán 4. Lặp tương tự với các app khác 5. toonge kết | Bước 2–4: Phải chuyển đổi giữa nhiều ứng dụng, nhập lại thông tin và chờ kết quả. Bạn ước tính mất 3 phút/app, tổng cộng khoảng 10 phút khi kiểm tra 3–4 ứng dụng. Cần đo thực tế để xác nhận. |
+| Impact (nếu không giải thì sao) | Mất thời gian tìm kiếm; Có thể thiếu các thanh toán  |
+| Success metric (baseline → target) | muốn giảm thời gian thực tế so sánh tương đương với việc tìm từng app (10p -> 3p)  |
+| Phương án không dùng AI | Xây dựng hệ thống tích hợp dữ liệu/API từ các nhà cung cấp, truy vấn đồng thời và hiển thị bảng so sánh. |
+| Giả thuyết về AI (nếu có) | AI có thể phân tích nhu cầu người dùng, đánh giá các phương án theo giá, thời gian chờ, thời gian di chuyển và đưa ra đề xuất phù hợp. |
+| Cảm nhận nhanh | Workflow + Agent |
 
 ### Card muốn pitch nhất
 
