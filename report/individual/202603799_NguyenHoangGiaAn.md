@@ -181,17 +181,16 @@ vào tài khoản lạ tại quầy giao dịch mà không ai nhận ra dấu hi
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
-| Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
-
+| Pitch Problem Card | Chia sẻ 3 card cá nhân (#7 Zalo Parent Assistant, #8 IT Setup Automation, #9 Anti-Fraud Financial) và nghe 6 card còn lại. | #7 đạt 34 điểm, cao nhất nhóm. |
+| Phản biện bài của bạn khác | Hỏi #2: "Khác gì Whisper/Notion AI?" Hỏi #5: "Khác gì bộ lọc TopCV?" | Buộc các card làm rõ khác biệt so với công cụ sẵn có. |
+| Nhận phản biện | Nhận câu hỏi cho #7 (rủi ro OCR chữ viết tay). Tôi đã sửa: đưa vào tiêu chí đánh giá đầu ra AI. | Rủi ro OCR trở thành tiêu chí đo được. |
+| Gom cluster / cây OST | Đóng góp candidate vào Cluster C (Safety & Automation), xây dựng OST nhánh Opportunity A. | #7 nằm ở Cluster C, Opportunity A. |
+| Chọn candidate problem | Chấm điểm và trình bày lý do chọn #7 (mục 2.4). | #7 đạt 34 điểm, cao nhất nhóm, nên được chọn. |
+| Kiểm chứng / research | Phỏng vấn chị H.T.Hương, tổng hợp interview snapshot, rút insight "cần tách biệt thông báo chính thức khỏi luồng thảo luận". | Xác nhận pain point, định hướng giải pháp. |
+| Quy trình nhóm | Hỗ trợ phần boundary, xây dựng bảng phân định trách nhiệm AI/con người và 4 phương án fallback. | Xác định rõ ranh giới Human-in-the-loop cho bài toán có tiền bạc. |
+| Problem Statement | Viết Problem Statement v0, lập bảng thay đổi v0 → v1. | PS đo được (baseline → target), v1 làm rõ boundary "AI không tự reply/chuyển tiền". |
+| Mức can thiệp AI | Xây dựng 4 tiêu chí đánh giá đầu ra AI (eval). | Eval gắn với rủi ro thực tế của người dùng. |
+| Quyết định | Trình bày kết luận GO (Pilot) và lý do (mục 8.2). | Nhóm chốt GO. |
 ---
 
 ## 5. Dùng AI
