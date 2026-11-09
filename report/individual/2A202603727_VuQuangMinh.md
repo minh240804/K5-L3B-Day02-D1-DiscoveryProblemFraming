@@ -95,9 +95,9 @@ Quy trình nháp hiện tại:
 
 ### Card muốn pitch nhất
 
-- Card số:
-- Vì sao:
-- Câu hỏi muốn nhóm phản biện:
+- Card số: #2
+- Vì sao: Vì nó luôn là yêu cầu thiết yếu, Càng khi AI phát triển đây sẽ là bài toán mà mọi nền tảng cần phải giải
+- Câu hỏi muốn nhóm phản biện: Tính tin cậy của các thông tin 
 
 ### AI đã phản biện card thế nào
 
@@ -111,16 +111,16 @@ Quy trình nháp hiện tại:
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
-| Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
+| Pitch Problem Card | Trình bày các ý tưởng của bản thân, Tham gia phản biện và chấm điểm | Đưa ra được điểm số và kêt quả  |
+| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: Chất lượng AC đo như thế nào? Edge cases AI sinh ra có đúng business logic không?, Phân quyền truy cập dữ liệu (RBAC) xử lý thế nào? | Đóng góp vào ý kiến của bài, đưa ra được 1 vài vấn đề  |
+| Nhận phản biện | Câu hỏi tôi nhận được: Có bị Grab/Gojek chặn API/Anti-scraping không?, Khác gì các bộ lọc từ khóa nâng cao của TopCV, Rủi ro bảo mật OTP/Banking API là cực cao, liệu người dùng dám cấp quyền?| Tôi đã sửa gì: Cần phải xem xét về khả năng của các phương án, tuy mới chỉ là xác định bài toán nhưng cần cân nhác thêm  |
+| Gom cluster / cây OST | Phân loại:   | |
+| Chọn candidate problem |  |  |
+| Kiểm chứng / research |  |  |
+| Quy trình nhóm |  |  |
+| Problem Statement |  |  |
+| Mức can thiệp AI |  |  |
+| Quyết định | Tổng hợp Value, Usability, Feasibility và Viability. Đưa kết quả cho dự án | Nhóm chọn được bài toán phù hợp |
 
 ---
 
@@ -142,6 +142,7 @@ Quy trình nháp hiện tại:
 Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ cho các câu 6.1–6.6 (không tính 6.7, câu này được chấm riêng ở tiêu chí C5). **Không dùng AI để viết thay.**
 
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
+Các problems các bạn có nhiều phần liên quan đến nghiệp vụ làm việc. Nó cho thấy các vấn đề khác nhau và cách nhìn khi giải quyết nó
 
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
 
