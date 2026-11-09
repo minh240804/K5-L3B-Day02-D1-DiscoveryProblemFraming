@@ -129,8 +129,3 @@ Mỗi thành viên thêm một mục theo mẫu dưới đây, tiêu đề là `
 - Cách xác định boundary AI vs con người (Human-in-the-loop) trong bài toán có yếu tố tiền bạc
 
 ---
-
-## Ghi chú
-
-- Slot STT 4 trong `TEAM.md` để trống vì báo cáo chỉ thể hiện 3 thành viên — nếu nhóm có thành viên thứ 4 thực tế (ví dụ "Thành viên 4" xuất hiện trong cột "ai hỏi" ở mục 2.1), cần bổ sung tên và chia lại phần "Nhận phản biện" cho người đó.
-- Các câu hỏi phản biện ghi "Thành viên 4" trong báo cáo (về RBAC cho #3 và OTP/banking cho #6) hiện được gán cho nhóm chung, chưa gán riêng cho ai — nếu có thành viên 4, nên giao phần này cho họ để tránh trùng với 3 người trên.
